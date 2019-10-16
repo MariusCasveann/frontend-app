@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flyout, Icon } from 'backoffice-shared-components';
+// import { Flyout, Icon } from 'backoffice-shared-components';
 import { LogoutButtonPresenter } from './../../../authentication';
 import { Button } from 'antd';
 import './UserMenu.css';
@@ -19,26 +19,30 @@ const redirectToProfilePage = () => {
 export default ({ currentUser }: UserMenuPresenter) => {
     if (currentUser) {
         return (
-            <div className="user-menu">
-                <Flyout
-                    content={<span>{currentUser.email}</span>}
-                    footer={
-                        <span>
-                            <Button type="link" onClick={redirectToProfilePage}>
-                                Profile
-                            </Button>
-                            <br />
-                            <Icon type="power-off" size="small" color="black" className="margins-power-icon" />
-                            <LogoutButtonPresenter />
-                        </span>
-                    }
-                    label={
-                        <span>
-                            {currentUser.firstName} {currentUser.lastName}
-                        </span>
-                    }
-                    position="left"
-                />
+            // <div className="user-menu">
+            //     <Flyout
+            //         content={<span>{currentUser.email}</span>}
+            //         footer={
+            //             <span>
+            //                 <Button type="link" onClick={redirectToProfilePage}>
+            //                     Profile
+            //                 </Button>
+            //                 <br />
+            //                 <Icon type="power-off" size="small" color="black" className="margins-power-icon" />
+            //                 <LogoutButtonPresenter />
+            //             </span>
+            //         }
+            //         label={
+            //             <span>
+            //                 {currentUser.firstName} {currentUser.lastName}
+            //             </span>
+            //         }
+            //         position="left"
+            //     />
+            // </div>
+            <div className="user-menu" style={{ display: 'block' }}>
+                <p style={{ fontWeight: 'bold', fontSize: 18 }}>Marius Casvean</p>
+                <p style={{ marginTop: -38 }}>marius.casvean@accesa.eu</p>
             </div>
         );
     }

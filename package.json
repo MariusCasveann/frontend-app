@@ -10,7 +10,6 @@
     "apollo-link": "^1.2.13",
     "apollo-link-error": "^1.1.12",
     "axios": "^0.18.0",
-    "backoffice-shared-components": "^2.0.0-snapshot.21",
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
     "graphql-tag": "^2.10.1",
