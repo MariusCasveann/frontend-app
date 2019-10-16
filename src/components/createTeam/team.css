@@ -1,0 +1,26 @@
+.team-form .ant-form-item {
+    display: grid;
+}
+
+.form-buttons-wrapper {
+    text-align: center;
+}
+
+.form-buttons-wrapper .ant-btn {
+    width: 130px;
+}
+
+.ant-btn.submit-button {
+    background-color: var(--bo-color-interactive);
+    border-color: unset;
+    color: white;
+}
+
+.ant-btn.submit-button:hover {
+    background-color: var(--bo-color-hover);
+    color: white;
+}
+
+.card-content-wrapper .team-form .ant-select.ant-select-enabled {
+    width: 100%;
+}

@@ -1,0 +1,23 @@
+customer: dp
+version: 1
+product: ui
+application: frontend-new
+type: node10
+build: ./build.sh
+exec:
+    - ./run.sh
+port: 3000
+resources:
+    limits:
+        cpu: 400m
+        memory: 400Mi
+    requests:
+        cpu: 100m
+        memory: 100Mi
+replicas: 1
+implements: frontend-new
+enablessl: true
+copy:
+    - build
+    - ./run.sh
+    - ./env.sh

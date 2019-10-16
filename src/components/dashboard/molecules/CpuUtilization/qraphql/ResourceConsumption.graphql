@@ -1,0 +1,26 @@
+query ResourceConsumption(
+    $entityId: Long
+    $deploymentStage: DeploymentStageEnum
+    $resourceType: ResourceTypeEnum
+    $aggregationType: ResourceAggregationTypeEnum
+    $entityType: QueryEntity
+    $toDate: LocalDate
+    $fromDate: LocalDate
+) {
+    resourceConsumption(
+        query: {
+            entityId: $entityId
+            deploymentStage: $deploymentStage
+            resourceType: $resourceType
+            aggregationType: $aggregationType
+            entityType: $entityType
+            toDate: $toDate
+            fromDate: $fromDate
+        }
+    ) {
+        projectId
+        resourceType
+        usage
+        usageDate
+    }
+}

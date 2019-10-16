@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardLegend renders correctly 1`] = `
+<div
+  className="legend-container"
+/>
+`;

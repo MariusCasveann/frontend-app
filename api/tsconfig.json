@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "lib": ["es6", "es7", "es2017", "dom", "esnext.asynciterable", "es2018.promise"],
+        "sourceMap": true,
+        "outDir": "dist",
+        "removeComments": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "*": ["src/types/*", "typings/*"]
+        },
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*"]
+}

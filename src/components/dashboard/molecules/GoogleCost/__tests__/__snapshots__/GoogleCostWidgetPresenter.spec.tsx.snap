@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GoogleCostWidgetPresenter when chart data is undefined renders an error 1`] = `
+<LoadingOrErrorPresenter
+  error="Error"
+  loading={false}
+/>
+`;
+
+exports[`GoogleCostWidgetPresenter when chart data is undefined renders loading 1`] = `
+<LoadingOrErrorPresenter
+  error=""
+  loading={true}
+/>
+`;
+
+exports[`GoogleCostWidgetPresenter when there are chart data renders a Bar chart 1`] = `
+Array [
+  <div
+    className="chart"
+  >
+    <Bar
+      data={
+        Object {
+          "datasets": Array [
+            Object {
+              "backgroundColor": Array [
+                "#859ec4",
+              ],
+              "data": Array [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                12,
+              ],
+            },
+          ],
+          "labels": Array [
+            "Oct.",
+            "Nov.",
+            "Dec.",
+            "Jan.",
+            "Feb.",
+            "Mar.",
+            "Apr.",
+            "May",
+            "Jun.",
+            "Jul.",
+            "Aug.",
+            "Sep.",
+          ],
+        }
+      }
+      options={
+        Object {
+          "legend": Object {
+            "display": false,
+          },
+          "maintainAspectRatio": false,
+          "responsive": true,
+          "scales": Object {
+            "yAxes": Array [
+              Object {
+                "ticks": Object {
+                  "max": 80,
+                },
+              },
+            ],
+          },
+        }
+      }
+    />
+  </div>,
+  <div
+    className="numbers-container"
+  >
+    <div
+      className="number-display"
+    >
+      <h2
+        aria-label={null}
+        className="ant-typography number-display-number"
+        style={
+          Object {
+            "WebkitLineClamp": null,
+          }
+        }
+      >
+        78
+         EUR
+         
+      </h2>
+      <span
+        aria-label={null}
+        className="ant-typography number-display-label"
+        style={
+          Object {
+            "WebkitLineClamp": null,
+          }
+        }
+      >
+        DEV
+      </span>
+    </div>
+  </div>,
+]
+`;

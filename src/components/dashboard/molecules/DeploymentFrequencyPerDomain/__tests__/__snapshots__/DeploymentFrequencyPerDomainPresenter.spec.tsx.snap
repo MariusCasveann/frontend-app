@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeploymentFrequencyPerDomainPresenter renders correctly 1`] = `
+<div
+  className="deployment-frequency-per-resource-card card"
+  style={
+    Object {
+      "flex": "1 1 45%",
+    }
+  }
+>
+  <div
+    className="card-title-wrapper"
+  >
+    <div
+      className="card-title"
+    >
+      Deployment Frequency KPIs
+    </div>
+  </div>
+  <div
+    className="card-content-data"
+  >
+    <div
+      className="card-content-wrapper"
+    >
+      <DeploymentFrequencyWidget
+        fromDate="2019-01-01"
+        selectedEntityState={
+          Object {
+            "__typename": "Domain",
+            "id": 102,
+            "name": "Engineering Platform",
+          }
+        }
+        showTotalBuilds={false}
+        toDate="2019-01-02"
+      />
+    </div>
+  </div>
+</div>
+`;

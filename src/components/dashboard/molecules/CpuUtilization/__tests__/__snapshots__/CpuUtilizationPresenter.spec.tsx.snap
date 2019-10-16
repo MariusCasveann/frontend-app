@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CpuUtilizationPresenter renders correctly 1`] = `
+<Card
+  className="cpu-utilization-card"
+  title="CPU utilization"
+  width={45}
+>
+  <CpuUtilizationWidget
+    fromDate="2019-01-01"
+    selectedProductId={50051}
+    toDate="2019-01-02"
+  />
+</Card>
+`;

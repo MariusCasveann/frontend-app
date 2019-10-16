@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarPresenter renders correctly 1`] = `
+<Sider
+  collapsed={false}
+  collapsible={true}
+  onCollapse={[Function]}
+>
+  <Menu
+    mode="inline"
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+    theme="dark"
+  >
+    <Apollo(Connect(_default))
+      showSelect={true}
+    />
+    <SubMenu
+      className="admin-submenu"
+      title={
+        <React.Fragment>
+          <Icon
+            type="info"
+          />
+          <span>
+            Super Admin Page
+          </span>
+        </React.Fragment>
+      }
+    >
+      <MenuItem
+        onClick={[Function]}
+      >
+        <Icon
+          type="bundle"
+        />
+        Deployment stages
+      </MenuItem>
+      <MenuItem
+        onClick={[Function]}
+      >
+        <Icon
+          type="bundle"
+        />
+        External tools
+      </MenuItem>
+      <MenuItem
+        onClick={[Function]}
+      >
+        <Icon
+          type="bundle"
+        />
+        Google Folders
+      </MenuItem>
+      <MenuItem
+        onClick={[Function]}
+      >
+        <Icon
+          type="bundle"
+        />
+        Business Domain
+      </MenuItem>
+    </SubMenu>
+  </Menu>
+</Sider>
+`;

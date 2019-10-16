@@ -1,0 +1,50 @@
+.domain-legend-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.canvas-container {
+    min-height: 250px;
+    width: 30%;
+}
+
+.legend-container {
+    min-height: 250px;
+    width: 70%;
+}
+
+.canvas-container canvas {
+    height: 237px !important;
+    width: 502px !important;
+}
+
+/* Style for mobile phone */
+@media only screen and (max-width: 1300px) {
+    .domain-legend-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .canvas-container {
+        min-height: 250px;
+        width: 500px;
+    }
+    .legend-container {
+        min-height: 100px;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .canvas-container canvas {
+        height: 171px !important;
+        width: 287px !important;
+    }
+}
+
+.card-content-wrapper {
+    width: 100%;
+}

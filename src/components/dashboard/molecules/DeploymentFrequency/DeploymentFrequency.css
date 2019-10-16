@@ -1,0 +1,65 @@
+.deployment-frequency-container .card-content-data {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.deployment-frequency-container .card-content-wrapper {
+    display: flex;
+}
+
+.builds-number {
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.total-builds {
+    font-weight: bold;
+    font-size: 38px;
+}
+
+/* Style for mobile phone */
+@media only screen and (max-width: 1300px) {
+    .deployment-frequency-container .card-content-wrapper {
+        display: grid;
+    }
+    .deployment-frequency-container .legend-container {
+        display: block;
+    }
+    .builds-number {
+        justify-content: flex-start;
+    }
+}
+
+.deployment-frequency-per-resource-card .card-content-data {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.deployment-frequency-per-resource-card .card-selection {
+    width: auto;
+}
+
+.deployment-frequency-per-resource-card .card-content-wrapper {
+    display: flex;
+}
+
+.deployment-frequency-per-resource-card .legend-container {
+    display: block;
+    grid-template-columns: unset;
+}
+
+.deployment-frequency-per-resource-card .canvas-container {
+    width: 480px;
+}
+
+@media only screen and (max-width: 1300px) {
+    .deployment-frequency-per-resource-card .card-content-wrapper {
+        flex-direction: column;
+    }
+}

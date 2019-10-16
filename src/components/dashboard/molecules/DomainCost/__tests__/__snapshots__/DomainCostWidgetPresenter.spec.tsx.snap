@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DomainCostWidgetPresenter when chart data is undefined renders an error 1`] = `null`;
+
+exports[`DomainCostWidgetPresenter when chart data is undefined renders loading 1`] = `null`;
+
+exports[`DomainCostWidgetPresenter when there are chart data renders a Doughnut 1`] = `
+<div
+  className="domain-legend-container"
+>
+  <CardLegend
+    colors={
+      Array [
+        "#0c3d8a",
+        "#859ec4",
+        "#D8DADA",
+        "#487ebd",
+        "#007898",
+        "#7fbbcb",
+        "#58737a",
+        "#92aab1",
+        "#eee7a5",
+        "#f1e364",
+        "#f8b100",
+        "#dcaeb9",
+        "#ad405a",
+        "#d9d4b9",
+        "#a19351",
+        "#886b22",
+        "#7d7a58",
+        "#564e02",
+        "#c1dfc4",
+        "#7dab6e",
+        "#008d3a",
+        "#36542c",
+        "#263428",
+      ]
+    }
+    labels={
+      Array [
+        "Assortment & Space Management (22412.97 EUR)",
+        "B2B Experience (798.72 EUR)",
+        "Checkout (Multichannel Experience) (48097.69 EUR)",
+      ]
+    }
+  />
+  <div
+    className="canvas-container"
+  >
+    <Doughnut
+      data={
+        Object {
+          "datasets": Array [
+            Object {
+              "backgroundColor": Array [
+                "rgb(109,46,235)",
+                "rgb(222,28,70)",
+                "rgb(220,159,172)",
+                "rgb(125,62,251)",
+              ],
+              "data": Array [
+                49198.94,
+                60463.31,
+                983.12,
+                6401.91,
+              ],
+            },
+          ],
+          "labels": Array [
+            "Customer Retention(49198.94)",
+            "Checkout (Multichannel Experience)(60463.31)",
+            "B2B Experience(983.12)",
+            "Service Management(6401.91)",
+          ],
+        }
+      }
+      options={
+        Object {
+          "legend": Object {
+            "display": false,
+          },
+          "responsive": true,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`DomainCostWidgetPresenter when there are no chart data doesnt render a Doughnut 1`] = `<p />`;

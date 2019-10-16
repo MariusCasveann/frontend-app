@@ -1,0 +1,13 @@
+.number-display {
+    display: inline-block;
+    margin-right: calc(2 * var(--responsive-offset));
+}
+
+h2.number-display-number {
+    color: var(--font-color-headline);
+    margin-bottom: -0.1em;
+}
+
+.number-display-label {
+    color: var(--font-color-inactive);
+}

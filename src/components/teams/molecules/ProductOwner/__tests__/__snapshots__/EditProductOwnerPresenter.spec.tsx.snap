@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditProductOwnerPresenter should return the expected output when changeProductOwner is false  1`] = `null`;
+
+exports[`EditProductOwnerPresenter should return the expected output when changeProductOwner is true  1`] = `
+<Modal
+  confirmLoading={false}
+  maskTransitionName="fade"
+  okType="primary"
+  onCancel={[Function]}
+  onOk={[MockFunction]}
+  title="Edit product owner"
+  transitionName="zoom"
+  visible={true}
+  width={520}
+>
+  <Form
+    className="team-form"
+    colon={true}
+    hideRequiredMark={false}
+    layout="vertical"
+    onSubmit={[Function]}
+  >
+    <FormItem
+      hasFeedback={false}
+      label="Product owner"
+      labelCol={
+        Object {
+          "span": 14,
+        }
+      }
+      wrapperCol={
+        Object {
+          "span": 14,
+        }
+      }
+    />
+  </Form>
+</Modal>
+`;

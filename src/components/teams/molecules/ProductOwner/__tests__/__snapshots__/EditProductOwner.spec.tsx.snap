@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductOwner should return the expected output 1`] = `
+<_default
+  changeProductOwner={true}
+  getFieldDecorator={[Function]}
+  handleSubmit={[Function]}
+  loadingProductOwner={true}
+  productOwnerOptions={Array []}
+  setChangeProductOwner={[MockFunction]}
+  setSearchProductOwnerInput={[Function]}
+  team={
+    Object {
+      "__typename": "Team",
+      "id": 2355,
+      "productOwner": Object {
+        "__typename": "User",
+        "firstName": "TestUser",
+        "id": 11,
+        "lastName": "Test",
+      },
+      "teamMembers": Array [
+        Object {
+          "__typename": "User",
+          "email": "test1@mediamarktsaturn.com",
+          "firstName": "Test",
+          "id": "1234",
+          "lastName": "Test2",
+          "roles": Array [
+            Object {
+              "__typename": "Role",
+              "name": "WRITE_ALL",
+            },
+            Object {
+              "__typename": "Role",
+              "name": "a-admin",
+            },
+          ],
+        },
+        Object {
+          "__typename": "User",
+          "email": "test2@mediamarktsaturn.com",
+          "firstName": "Test2",
+          "id": "2234",
+          "lastName": "Test2",
+          "roles": Array [
+            Object {
+              "__typename": "Role",
+              "name": "WRITE_ALL",
+            },
+            Object {
+              "__typename": "Role",
+              "name": "a-admin",
+            },
+            Object {
+              "__typename": "Role",
+              "name": "test-admin",
+            },
+          ],
+        },
+      ],
+    }
+  }
+/>
+`;

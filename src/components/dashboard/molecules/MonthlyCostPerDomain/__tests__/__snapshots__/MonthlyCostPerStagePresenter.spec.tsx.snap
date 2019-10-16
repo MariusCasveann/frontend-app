@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonthlyCostPerStagePresenter when there is value renders a NumberDisplay 1`] = `
+<NumberDisplay
+  currency="EUR"
+  label="DEV"
+  value={78}
+/>
+`;
+
+exports[`MonthlyCostPerStagePresenter when there is zero value renders any data 1`] = `
+<p>
+  No data available, please select another time and/or domain/product.
+</p>
+`;

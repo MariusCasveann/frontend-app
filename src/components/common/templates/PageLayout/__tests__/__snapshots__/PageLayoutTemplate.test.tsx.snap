@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageTemplate renders a react component  1`] = `
+<section
+  className="ant-layout"
+  style={
+    Object {
+      "minHeight": "100vh",
+    }
+  }
+>
+  <SidebarPresenter
+    allowedRoutes={Array []}
+    selectedProduct={
+      Object {
+        "__typename": "LightProductDTO",
+        "id": 50051,
+        "logo": null,
+        "name": "a",
+      }
+    }
+  />
+  <section
+    className="ant-layout"
+  >
+    <Header />
+    <main
+      className="ant-layout-content"
+    >
+      <Breadcrumb />
+      <div>
+        Test
+      </div>
+    </main>
+  </section>
+</section>
+`;

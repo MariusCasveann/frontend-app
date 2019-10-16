@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DomainFiltersPresenter renders correctly 1`] = `
+<Card
+  title="Filter"
+  width={100}
+>
+  <FiltersPresenter />
+  <Apollo(Connect(_default))
+    onDomainSelected={[Function]}
+    selectedDomain={
+      Object {
+        "__typename": "Domain",
+        "id": 102,
+        "name": "Engineering Platform",
+      }
+    }
+  />
+</Card>
+`;

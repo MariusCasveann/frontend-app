@@ -1,0 +1,6 @@
+query QueryAllDomains {
+    allDomains {
+        id
+        name
+    }
+}

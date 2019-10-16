@@ -1,0 +1,7 @@
+.dropdown {
+    min-width: 185px;
+}
+
+.card-content-wrapper .ant-select.ant-select-enabled {
+    width: 185px;
+}

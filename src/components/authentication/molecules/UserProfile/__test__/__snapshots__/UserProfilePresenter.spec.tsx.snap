@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserProfilePresenter renders correctly 1`] = `
+<Card
+  title="User profile"
+>
+  <Row>
+    <Col
+      xs={4}
+    >
+      Username:
+    </Col>
+    <Col>
+      Test
+    </Col>
+  </Row>
+  <hr />
+  <Row>
+    <Col
+      xs={4}
+    >
+      Firstname:
+    </Col>
+    <Col>
+      Test
+    </Col>
+  </Row>
+  <hr />
+  <Row>
+    <Col
+      xs={4}
+    >
+      Lastname:
+    </Col>
+    <Col>
+      Test
+    </Col>
+  </Row>
+  <hr />
+  <Row>
+    <Col
+      xs={4}
+    >
+      Email:
+    </Col>
+    <Col>
+      test@mediamarktsaturn.com
+    </Col>
+  </Row>
+  <hr />
+  <Row>
+    <Col
+      xs={4}
+    >
+      Assigned roles:
+    </Col>
+  </Row>
+  <Button
+    type="danger"
+  >
+    Save
+  </Button>
+  <Button
+    onClick={[Function]}
+    type="primary"
+  >
+    Cancel
+  </Button>
+</Card>
+`;

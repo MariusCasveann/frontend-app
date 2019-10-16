@@ -1,0 +1,3 @@
+mutation MakeUserProductAdmin($productId: Long, $userId: Long) {
+    makeUserProductAdmin(productId: $productId, userId: $userId)
+}

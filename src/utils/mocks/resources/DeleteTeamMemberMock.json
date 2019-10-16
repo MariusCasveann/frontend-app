@@ -1,0 +1,34 @@
+{
+    "deleteTeamMember": {
+        "productId": "1234",
+        "team": {
+            "__typename": "Team",
+            "id": "2355",
+            "productOwner": {
+                "id": "12",
+                "firstName": "TestUser",
+                "lastName": "Test",
+                "__typename": "User"
+            },
+            "teamMembers": [
+                {
+                    "__typename": "User",
+                    "email": "test@mediamarktsaturn.com",
+                    "firstName": "Test",
+                    "id": "12",
+                    "lastName": "Test",
+                    "roles": [
+                        {
+                            "name": "WRITE_ALL",
+                            "__typename": "Role"
+                        },
+                        {
+                            "name": "a-admin",
+                            "__typename": "Role"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

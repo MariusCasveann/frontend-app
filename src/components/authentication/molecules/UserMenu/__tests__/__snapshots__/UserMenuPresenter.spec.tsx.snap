@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserMenuPresenter renders correctly 1`] = `
+<div
+  className="user-menu"
+>
+  <Flyout
+    content={
+      <span>
+        test@mediamarktsaturn.com
+      </span>
+    }
+    footer={
+      <span>
+        <Button
+          onClick={[Function]}
+          type="link"
+        >
+          Profile
+        </Button>
+        <br />
+        <Icon
+          className="margins-power-icon"
+          color="black"
+          size="small"
+          type="power-off"
+        />
+        <LogoutButtonPresenter />
+      </span>
+    }
+    label={
+      <span>
+        Test
+         
+        Test
+      </span>
+    }
+    position="left"
+  />
+</div>
+`;

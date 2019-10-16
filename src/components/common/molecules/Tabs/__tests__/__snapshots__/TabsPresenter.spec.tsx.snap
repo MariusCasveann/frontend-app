@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabsPresenter renders correctly 1`] = `
+<Tabs
+  defaultActiveKey="0"
+  hideAdd={false}
+  tabPosition="top"
+  type="card"
+>
+  <TabPane
+    placeholder={null}
+    tab="name"
+  >
+    content
+  </TabPane>
+</Tabs>
+`;

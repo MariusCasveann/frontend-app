@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` DomainDashboardPresenter renders correctly 1`] = `
+<div
+  className="dashboard-wrapper"
+>
+  <CardLayout
+    className="dashboard-card-layout"
+    width={100}
+  >
+    <DomainFiltersPresenter
+      setSelectedDomain={[Function]}
+    />
+    <DomainRessourcesPresenter />
+    <ProductCostPresenter />
+    <CardLayout
+      width={100}
+    >
+      <CostPerDomainPresenter />
+      <Card
+        className="deployment-frequency-per-resource-card"
+        title="Deployment Frequency KPIs"
+        width={45}
+      />
+    </CardLayout>
+    <MonthlyCostPerDomainPresenter />
+  </CardLayout>
+</div>
+`;

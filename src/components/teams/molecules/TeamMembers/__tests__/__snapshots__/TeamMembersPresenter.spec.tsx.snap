@@ -1,0 +1,319 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamMembersPresenter when there is an error renders LoadingOrError 1`] = `
+<Card
+  width={100}
+>
+  <LoadingOrErrorPresenter
+    error="Error message"
+    loading={false}
+  />
+</Card>
+`;
+
+exports[`TeamMembersPresenter when there is loading renders LoadingOrError 1`] = `
+<Card
+  width={100}
+>
+  <LoadingOrErrorPresenter
+    error=""
+    loading={true}
+  />
+</Card>
+`;
+
+exports[`TeamMembersPresenter when there is no data renders no data 1`] = `
+<CreateTeam
+  history={
+    Object {
+      "action": "PUSH",
+      "block": [MockFunction],
+      "createHref": [MockFunction],
+      "go": [MockFunction],
+      "goBack": [MockFunction],
+      "goForward": [MockFunction],
+      "length": 7,
+      "listen": [MockFunction],
+      "location": Object {
+        "hash": "",
+        "pathname": "/path",
+        "search": "",
+        "state": Object {},
+      },
+      "push": [MockFunction],
+      "replace": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`TeamMembersPresenter when there is value renders a Card with teammembers 1`] = `
+Array [
+  <ConfirmModal
+    onCancel={[Function]}
+    onOk={[Function]}
+    text="Do you want to delete this team member"
+    title="Delete"
+    visible={false}
+  />,
+  <Card
+    title="Team members"
+    width={100}
+  >
+    <EditProductOwner
+      changeProductOwner={false}
+      selectedProduct={
+        Object {
+          "__typename": "LightProductDTO",
+          "id": 50051,
+          "logo": null,
+          "name": "a",
+        }
+      }
+      setChangeProductOwner={[Function]}
+      teamByProductId={
+        Object {
+          "__typename": "Team",
+          "id": 2355,
+          "productOwner": Object {
+            "__typename": "User",
+            "firstName": "TestUser",
+            "id": 11,
+            "lastName": "Test",
+          },
+          "teamMembers": Array [
+            Object {
+              "__typename": "User",
+              "email": "test1@mediamarktsaturn.com",
+              "firstName": "Test",
+              "id": "1234",
+              "lastName": "Test2",
+              "roles": Array [
+                Object {
+                  "__typename": "Role",
+                  "name": "WRITE_ALL",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "a-admin",
+                },
+              ],
+            },
+            Object {
+              "__typename": "User",
+              "email": "test2@mediamarktsaturn.com",
+              "firstName": "Test2",
+              "id": "2234",
+              "lastName": "Test2",
+              "roles": Array [
+                Object {
+                  "__typename": "Role",
+                  "name": "WRITE_ALL",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "a-admin",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "test-admin",
+                },
+              ],
+            },
+          ],
+        }
+      }
+    />
+    <AddTeamMembers
+      addTeamMembers={false}
+      selectedProduct={
+        Object {
+          "__typename": "LightProductDTO",
+          "id": 50051,
+          "logo": null,
+          "name": "a",
+        }
+      }
+      setAddTeamMembers={[Function]}
+      teamByProductId={
+        Object {
+          "__typename": "Team",
+          "id": 2355,
+          "productOwner": Object {
+            "__typename": "User",
+            "firstName": "TestUser",
+            "id": 11,
+            "lastName": "Test",
+          },
+          "teamMembers": Array [
+            Object {
+              "__typename": "User",
+              "email": "test1@mediamarktsaturn.com",
+              "firstName": "Test",
+              "id": "1234",
+              "lastName": "Test2",
+              "roles": Array [
+                Object {
+                  "__typename": "Role",
+                  "name": "WRITE_ALL",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "a-admin",
+                },
+              ],
+            },
+            Object {
+              "__typename": "User",
+              "email": "test2@mediamarktsaturn.com",
+              "firstName": "Test2",
+              "id": "2234",
+              "lastName": "Test2",
+              "roles": Array [
+                Object {
+                  "__typename": "Role",
+                  "name": "WRITE_ALL",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "a-admin",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "test-admin",
+                },
+              ],
+            },
+          ],
+        }
+      }
+    />
+    <TeamProductOwnerPresenter
+      setAddTeamMembers={[Function]}
+      setChangeProductOwner={[Function]}
+      teamByProductId={
+        Object {
+          "__typename": "Team",
+          "id": 2355,
+          "productOwner": Object {
+            "__typename": "User",
+            "firstName": "TestUser",
+            "id": 11,
+            "lastName": "Test",
+          },
+          "teamMembers": Array [
+            Object {
+              "__typename": "User",
+              "email": "test1@mediamarktsaturn.com",
+              "firstName": "Test",
+              "id": "1234",
+              "lastName": "Test2",
+              "roles": Array [
+                Object {
+                  "__typename": "Role",
+                  "name": "WRITE_ALL",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "a-admin",
+                },
+              ],
+            },
+            Object {
+              "__typename": "User",
+              "email": "test2@mediamarktsaturn.com",
+              "firstName": "Test2",
+              "id": "2234",
+              "lastName": "Test2",
+              "roles": Array [
+                Object {
+                  "__typename": "Role",
+                  "name": "WRITE_ALL",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "a-admin",
+                },
+                Object {
+                  "__typename": "Role",
+                  "name": "test-admin",
+                },
+              ],
+            },
+          ],
+        }
+      }
+    />
+    <Table
+      columns={
+        Array [
+          Object {
+            "key": "avatar",
+            "render": [Function],
+            "width": 20,
+          },
+          Object {
+            "key": "name",
+            "render": [Function],
+            "title": "Name",
+          },
+          Object {
+            "dataIndex": "email",
+            "key": "email",
+            "title": "Email",
+          },
+          Object {
+            "key": "action",
+            "render": [Function],
+            "title": "Action",
+          },
+        ]
+      }
+      dataSource={
+        Array [
+          Object {
+            "__typename": "User",
+            "email": "test1@mediamarktsaturn.com",
+            "firstName": "Test",
+            "id": "1234",
+            "lastName": "Test2",
+            "roles": Array [
+              Object {
+                "__typename": "Role",
+                "name": "WRITE_ALL",
+              },
+              Object {
+                "__typename": "Role",
+                "name": "a-admin",
+              },
+            ],
+          },
+          Object {
+            "__typename": "User",
+            "email": "test2@mediamarktsaturn.com",
+            "firstName": "Test2",
+            "id": "2234",
+            "lastName": "Test2",
+            "roles": Array [
+              Object {
+                "__typename": "Role",
+                "name": "WRITE_ALL",
+              },
+              Object {
+                "__typename": "Role",
+                "name": "a-admin",
+              },
+              Object {
+                "__typename": "Role",
+                "name": "test-admin",
+              },
+            ],
+          },
+        ]
+      }
+      pagination={false}
+      rowKey={[Function]}
+    />
+  </Card>,
+]
+`;

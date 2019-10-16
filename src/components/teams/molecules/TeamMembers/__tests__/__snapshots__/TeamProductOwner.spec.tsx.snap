@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamProductOwnerPresenter when there is no data renders no data 1`] = `
+<div
+  className="product-owner-card"
+>
+  <div
+    className="product-owner-label"
+  >
+    Product owner: 
+  </div>
+  <Avatar
+    icon="user"
+    size="small"
+  />
+  <span
+    className="product-owner-name"
+  >
+     
+  </span>
+  <Icon
+    className="edit-icon"
+    onClick={[Function]}
+    type="edit"
+  />
+  <Button
+    className="add-member-button"
+    onClick={[Function]}
+    type="primary"
+  >
+    <Icon
+      type="user-add"
+    />
+    Add member
+  </Button>
+</div>
+`;
+
+exports[`TeamProductOwnerPresenter when there is value renders a Card with teammembers 1`] = `
+<div
+  className="product-owner-card"
+>
+  <div
+    className="product-owner-label"
+  >
+    Product owner: 
+  </div>
+  <Avatar
+    icon="user"
+    size="small"
+  />
+  <span
+    className="product-owner-name"
+  >
+    TestUser
+     
+    Test
+  </span>
+  <Icon
+    className="edit-icon"
+    onClick={[Function]}
+    type="edit"
+  />
+  <Button
+    className="add-member-button"
+    onClick={[Function]}
+    type="primary"
+  >
+    <Icon
+      type="user-add"
+    />
+    Add member
+  </Button>
+</div>
+`;

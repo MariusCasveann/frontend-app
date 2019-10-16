@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccumulatedProductCostPresenter renders correctly 1`] = `
+<Card
+  className="accumulated-product-cost-card"
+  title="Accumulated product cost"
+  width={100}
+>
+  <AccumulatedProductCostWidget
+    financialYear={null}
+    fromDate="2019-01-01"
+    selectedProductId={50051}
+    toDate="2019-01-02"
+  />
+</Card>
+`;

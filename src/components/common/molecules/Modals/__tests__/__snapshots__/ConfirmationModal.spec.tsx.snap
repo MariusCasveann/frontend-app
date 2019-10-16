@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationModal renders correctly when visible is false 1`] = `
+<Modal
+  onCancel={[MockFunction]}
+  onOk={[MockFunction]}
+  title="Confirmation modal"
+  visible={false}
+>
+  <p>
+    Confirmation modal is closed
+    ?
+  </p>
+</Modal>
+`;
+
+exports[`ConfirmationModal renders correctly when visible is true 1`] = `
+<Modal
+  onCancel={[MockFunction]}
+  onOk={[MockFunction]}
+  title="Confirmation modal"
+  visible={true}
+>
+  <p>
+    Confirmation modal is opened
+    ?
+  </p>
+</Modal>
+`;

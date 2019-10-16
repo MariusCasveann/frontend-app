@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DomainRessourcesPresenter renders correctly 1`] = `
+<Card
+  className="domain-ressources-card"
+  title="Accumulated domain cost"
+  width={100}
+>
+  <DomainRessourcesWidget
+    financialYear={null}
+    fromDate="2019-01-01"
+    selectedDomaintId={102}
+    toDate="2019-01-02"
+  />
+</Card>
+`;

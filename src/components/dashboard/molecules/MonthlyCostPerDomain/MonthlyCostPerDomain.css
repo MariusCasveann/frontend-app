@@ -1,0 +1,33 @@
+.monthly-cost-per-domain-card .chart {
+    padding: 15px 15px 15px;
+    flex: 1;
+    display: block;
+    min-height: 250px;
+    min-width: 320px;
+}
+
+.monthly-cost-per-domain-card {
+    display: flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.monthly-cost-per-domain-card .numbers-container {
+    padding-left: 20px;
+    padding-top: 10px;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.monthly-cost-per-domain-card .numbers-container .ant-typography {
+    margin-bottom: 0.1em;
+}
+
+/* Style for mobile phone */
+@media only screen and (max-width: 576px) {
+    .monthly-cost-per-domain-card .ant-select.ant-select-enabled {
+        width: 150px;
+    }
+}

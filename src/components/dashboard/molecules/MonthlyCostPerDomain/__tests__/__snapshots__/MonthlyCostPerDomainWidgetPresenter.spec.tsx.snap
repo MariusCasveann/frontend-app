@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonthlyCostPerDomainWidgetPresenter when chart data is undefined renders an error 1`] = `
+<LoadingOrErrorPresenter
+  error="Error"
+  loading={false}
+/>
+`;
+
+exports[`MonthlyCostPerDomainWidgetPresenter when chart data is undefined renders loading 1`] = `
+<LoadingOrErrorPresenter
+  error=""
+  loading={true}
+/>
+`;
+
+exports[`MonthlyCostPerDomainWidgetPresenter when there are chart data renders a Bar widget 1`] = `
+<div
+  className="chart"
+>
+  <Bar
+    data={
+      Object {
+        "datasets": Array [
+          Object {
+            "backgroundColor": "#859ec4ß",
+            "data": Array [
+              2111.74,
+              159.63,
+              802.89,
+              222.99,
+            ],
+            "label": "Monthly cost",
+          },
+        ],
+        "labels": Array [
+          "cloud-ccr",
+          "pref-center",
+          "promotions",
+          "rea",
+        ],
+      }
+    }
+    options={
+      Object {
+        "legend": Object {
+          "display": false,
+        },
+        "maintainAspectRatio": false,
+        "responsive": true,
+        "scales": Object {
+          "xAxes": Array [
+            Object {
+              "barPercentage": 0.3,
+            },
+          ],
+        },
+      }
+    }
+  />
+</div>
+`;
+
+exports[`MonthlyCostPerDomainWidgetPresenter when there are no chart data doesnt render a Bar widget 1`] = `
+<p>
+  No data available, please select another time and/or domain/product.
+</p>
+`;

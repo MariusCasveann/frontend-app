@@ -1,0 +1,11 @@
+.card-content-wrapper .date-picker-selector {
+    margin-right: 20px !important;
+}
+
+.ant-calendar-time-picker-btn {
+    display: none !important;
+}
+
+.select-financial-year {
+    width: 200px;
+}

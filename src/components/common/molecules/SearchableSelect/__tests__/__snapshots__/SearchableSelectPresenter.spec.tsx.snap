@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchableSelectPresenter should return the expected output 1`] = `
+<span>
+  <div
+    className="width-100-percent ant-select ant-select-enabled"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
+    onTouchStart={[Function]}
+  >
+    <div
+      aria-autocomplete="list"
+      aria-controls="test-uuid"
+      aria-expanded={false}
+      aria-haspopup="true"
+      className="ant-select-selection
+            ant-select-selection--multiple"
+      role="combobox"
+    >
+      <div
+        className="ant-select-selection__rendered"
+      >
+        <div
+          className="ant-select-selection__placeholder"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          style={
+            Object {
+              "WebkitUserSelect": "none",
+              "display": "block",
+              "userSelect": "none",
+            }
+          }
+          unselectable="on"
+        >
+          Please select
+        </div>
+        <ul>
+          <li
+            className="ant-select-search ant-select-search--inline"
+          >
+            <div
+              className="ant-select-search__field__wrap"
+            >
+              <input
+                autoComplete="off"
+                className="ant-select-search__field"
+                onChange={[Function]}
+                onKeyDown={[Function]}
+                value=""
+              />
+              <span
+                className="ant-select-search__field__mirror"
+              >
+                
+                 
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</span>
+`;

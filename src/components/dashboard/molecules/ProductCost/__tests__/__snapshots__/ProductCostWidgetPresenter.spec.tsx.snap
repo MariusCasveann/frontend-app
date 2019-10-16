@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCostWidgetPresenter when chart data is undefined renders an error 1`] = `
+<LoadingOrErrorPresenter
+  error="Error"
+  loading={false}
+/>
+`;
+
+exports[`ProductCostWidgetPresenter when chart data is undefined renders loading 1`] = `
+<LoadingOrErrorPresenter
+  error=""
+  loading={true}
+/>
+`;
+
+exports[`ProductCostWidgetPresenter when there are chart data renders a Doughnut 1`] = `
+<div
+  className="domain-legend-container"
+>
+  <CardLegend
+    colors={
+      Array [
+        "#0c3d8a",
+        "#859ec4",
+        "#D8DADA",
+        "#487ebd",
+        "#007898",
+        "#7fbbcb",
+        "#58737a",
+        "#92aab1",
+        "#eee7a5",
+        "#f1e364",
+        "#f8b100",
+        "#dcaeb9",
+        "#ad405a",
+        "#d9d4b9",
+        "#a19351",
+        "#886b22",
+        "#7d7a58",
+        "#564e02",
+        "#c1dfc4",
+        "#7dab6e",
+        "#008d3a",
+        "#36542c",
+        "#263428",
+      ]
+    }
+    labels={
+      Array [
+        "api-management (5385.09 EUR)",
+        "cicd (29057.45 EUR)",
+        "cloud-academy (249.92 EUR)",
+        "cloud-deploy (463.79 EUR)",
+        "cloud-foundation (1954.63 EUR)",
+        "cse-reskill (5.62 EUR)",
+        "dp-integ (1194.30 EUR)",
+      ]
+    }
+  />
+  <div
+    className="canvas-container"
+  >
+    <Doughnut
+      data={
+        Object {
+          "datasets": Array [
+            Object {
+              "backgroundColor": Array [
+                "rgb(34,151,151)",
+                "rgb(229,168,25)",
+                "rgb(196,2,44)",
+                "rgb(118,55,244)",
+                "rgb(110,114,123)",
+                "rgb(93,30,219)",
+                "rgb(191,130,143)",
+              ],
+              "data": Array [
+                5385.09,
+                9057.45,
+                249.92,
+                463.79,
+                1954.63,
+                5.62,
+                1194.3,
+              ],
+            },
+          ],
+          "formattedLabels": Array [
+            "api-management (5385.09 EUR)",
+            "cicd (29057.45 EUR)",
+            "cloud-academy (249.92 EUR)",
+            "cloud-deploy (463.79 EUR)",
+            "cloud-foundation (1954.63 EUR)",
+            "cse-reskill (5.62 EUR)",
+            "dp-integ (1194.30 EUR)",
+          ],
+          "labels": Array [
+            "api-management in EUR",
+            "cicd in EUR",
+            "cloud-academy in EUR",
+            "cloud-deploy in EUR",
+            "cloud-foundation in EUR",
+            "cse-reskill in EUR",
+            "dp-integ in EUR",
+          ],
+        }
+      }
+      options={
+        Object {
+          "legend": Object {
+            "display": false,
+          },
+          "responsive": true,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`ProductCostWidgetPresenter when there are no chart data doesnt render a Doughnut 1`] = `
+<p>
+  No data available, please select another time and/or domain/product.
+</p>
+`;

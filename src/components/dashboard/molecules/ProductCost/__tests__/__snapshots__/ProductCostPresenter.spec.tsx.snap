@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCostPresenter renders correctly 1`] = `
+<Card
+  className="product-cost-card"
+  title="Product cost"
+  width={100}
+>
+  <ProductCostWidget
+    financialYear={null}
+    fromDate="2019-01-01"
+    selectedDomaintId={102}
+    toDate="2019-01-02"
+  />
+</Card>
+`;

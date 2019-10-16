@@ -1,0 +1,8 @@
+query getAllUsers($search: String) {
+    allUsers(search: $search) {
+        login
+        id
+        firstName
+        lastName
+    }
+}

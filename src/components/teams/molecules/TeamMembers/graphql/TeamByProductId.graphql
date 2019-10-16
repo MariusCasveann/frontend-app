@@ -1,0 +1,19 @@
+query TeamByProductId($productId: Long) {
+    teamByProductId(productId: $productId) {
+        id
+        productOwner {
+            firstName
+            lastName
+            id
+        }
+        teamMembers {
+            firstName
+            lastName
+            id
+            email
+            roles {
+                name
+            }
+        }
+    }
+}

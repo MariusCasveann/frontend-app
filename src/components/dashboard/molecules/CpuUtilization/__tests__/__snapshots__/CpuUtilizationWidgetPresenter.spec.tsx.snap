@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CpuUtilizationYearWidgetPresenter when chart data is empty renders any data for the product 1`] = `
+<p>
+  No data available, please select another time and/or domain/product.
+</p>
+`;
+
+exports[`CpuUtilizationYearWidgetPresenter when the data is loading renders Loading 1`] = `
+<LoadingOrErrorPresenter
+  loading={true}
+/>
+`;
+
+exports[`CpuUtilizationYearWidgetPresenter when there are chart data renders a Semi Doughnut 1`] = `
+<div
+  className="domain-legend-container"
+>
+  <CardLegend
+    colors={
+      Array [
+        "#0c3d8a",
+        "#859ec4",
+        "#D8DADA",
+      ]
+    }
+    labels={
+      Array [
+        "Dev",
+        "Prod",
+        "Not used",
+      ]
+    }
+  />
+  <div>
+    <Doughnut
+      data={
+        Object {
+          "datasets": Array [
+            Object {
+              "backgroundColor": Array [
+                "#859ec4",
+                "#D8DADA",
+              ],
+              "data": Array [
+                0.0618,
+                9.382,
+              ],
+              "label": "Dev",
+            },
+            Object {
+              "backgroundColor": Array [
+                "#859ec4",
+                "#D8DADA",
+              ],
+              "data": Array [
+                0.0309,
+                9.691,
+              ],
+              "label": "Prod",
+            },
+          ],
+          "labels": Array [
+            "Dev",
+            "Prod",
+            "Not used",
+          ],
+        }
+      }
+      legend={
+        Object {
+          "display": false,
+        }
+      }
+      options={
+        Object {
+          "circumference": 3.141592653589793,
+          "maintainAspectRatio": false,
+          "responsive": true,
+          "rotation": 3.141592653589793,
+          "tooltips": Object {
+            "callbacks": Object {
+              "label": [Function],
+            },
+          },
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`CpuUtilizationYearWidgetPresenter when there are no chart data doesnt render a Semi Doughnut 1`] = `null`;
+
+exports[`CpuUtilizationYearWidgetPresenter when there is an error renders an error message 1`] = `
+<LoadingOrErrorPresenter
+  error="Error message"
+  loading={false}
+/>
+`;

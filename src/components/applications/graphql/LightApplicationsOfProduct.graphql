@@ -1,0 +1,8 @@
+query LightApplicationsOfProduct($productId: Long) {
+    lightApplicationsOfProduct(productId: $productId) {
+        id
+        name
+        service
+        staticPictureId
+    }
+}

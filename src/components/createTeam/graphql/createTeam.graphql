@@ -1,0 +1,5 @@
+mutation CreateTeam($productId: Long, $team: TeamInput) {
+    createTeam(productId: $productId, team: $team) {
+        id
+    }
+}

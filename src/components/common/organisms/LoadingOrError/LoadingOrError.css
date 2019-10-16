@@ -1,0 +1,11 @@
+.card-content-loading {
+    flex: 1;
+    display: flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 20px;
+}

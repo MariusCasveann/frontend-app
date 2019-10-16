@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Team should return the expected output 1`] = `
+<div
+  className="card"
+  style={
+    Object {
+      "flex": "1 1 100%",
+    }
+  }
+>
+  <div
+    className="card-content-data"
+  >
+    <div
+      className="card-content-wrapper"
+    >
+      <div>
+        error
+      </div>
+    </div>
+  </div>
+</div>
+`;

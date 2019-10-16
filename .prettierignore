@@ -1,0 +1,19 @@
+public/**/*
+
+# Production
+build/**/*
+
+# Dependencies
+node_modules/*
+
+# Testing & sonar
+coverage/**/*
+.scannerwork/**/*
+
+# Misc
+package.json
+package-lock.json
+server/tsconfig.json
+
+# Currently Breaking in v1.15.3
+*.md

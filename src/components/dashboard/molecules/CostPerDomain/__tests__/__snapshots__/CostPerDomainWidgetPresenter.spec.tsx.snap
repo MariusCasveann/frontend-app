@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CostPerDomainWidgetPresenter when there is value renders a NumberDisplay 1`] = `
+<div
+  className="numbers-container"
+>
+  <div
+    className="number-display"
+  >
+    <h2
+      aria-label={null}
+      className="ant-typography number-display-number"
+      style={
+        Object {
+          "WebkitLineClamp": null,
+        }
+      }
+    >
+      78
+       EUR
+       
+    </h2>
+    <span
+      aria-label={null}
+      className="ant-typography number-display-label"
+      style={
+        Object {
+          "WebkitLineClamp": null,
+        }
+      }
+    >
+      DEV
+    </span>
+  </div>
+</div>
+`;
+
+exports[`CostPerDomainWidgetPresenter when there is zero value renders any data 1`] = `
+<p>
+  No data available, please select another time and/or domain/product.
+</p>
+`;

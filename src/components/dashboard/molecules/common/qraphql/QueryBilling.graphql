@@ -1,0 +1,25 @@
+query QueryBilling(
+    $entity: QueryEntity
+    $entityId: Int
+    $stage: String
+    $financialYear: Int
+    $toDate: LocalDate
+    $fromDate: LocalDate
+) {
+    billingQuery(
+        query: {
+            entity: $entity
+            entityId: $entityId
+            stage: $stage
+            generateMissingValues: true
+            financialYear: $financialYear
+            toDate: $toDate
+            fromDate: $fromDate
+        }
+    ) {
+        resourceType
+        cost
+        date
+        currency
+    }
+}

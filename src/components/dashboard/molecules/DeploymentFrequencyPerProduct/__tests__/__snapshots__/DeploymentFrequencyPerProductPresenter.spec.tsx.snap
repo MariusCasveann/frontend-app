@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeploymentFrequencyPerProductPresenter renders correctly 1`] = `
+<Card
+  className="deployment-frequency-per-resource-card"
+  title="Deployment Frequency KPIs"
+  width={45}
+>
+  <DeploymentFrequencyWidget
+    entityType="product"
+    fromDate="2019-01-01"
+    selectedEntityState={
+      Object {
+        "__typename": "LightProductDTO",
+        "id": 50051,
+        "logo": null,
+        "name": "a",
+      }
+    }
+    showTotalBuilds={false}
+    toDate="2019-01-02"
+  />
+</Card>
+`;

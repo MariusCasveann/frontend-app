@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` DomainCostPresenter renders correctly 1`] = `
+<div
+  className="domain-cost-card card"
+  style={
+    Object {
+      "flex": "1 1 100%",
+    }
+  }
+>
+  <div
+    className="card-title-wrapper"
+  >
+    <div
+      className="card-title"
+    >
+      Domain costs
+    </div>
+  </div>
+  <div
+    className="card-content-data"
+  >
+    <div
+      className="card-content-wrapper"
+    >
+      <DomainCostWidget
+        financialYear={null}
+        fromDate="2019-01-01"
+        messageWhenNoData="No data available, please select another time and/or domain/product."
+        toDate="2019-01-02"
+      />
+    </div>
+  </div>
+</div>
+`;

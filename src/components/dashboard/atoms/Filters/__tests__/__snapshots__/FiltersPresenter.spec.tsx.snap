@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FiltersPresenter generateOptions should return the expected value 1`] = `
+Array [
+  <Option
+    value={2002}
+  >
+    2002
+  </Option>,
+  <Option
+    value={2001}
+  >
+    2001
+  </Option>,
+  <Option
+    value={2000}
+  >
+    2000
+  </Option>,
+]
+`;
+
+exports[`FiltersPresenter renders correctly 1`] = `
+<Context.Consumer>
+  [Function]
+</Context.Consumer>
+`;

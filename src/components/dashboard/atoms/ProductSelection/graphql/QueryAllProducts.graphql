@@ -1,0 +1,7 @@
+query QueryAllProducts {
+    allProducts {
+        id
+        logo
+        name
+    }
+}

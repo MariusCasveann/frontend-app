@@ -1,0 +1,29 @@
+.breadcrumb-padding {
+    padding: 20px 10px 10px;
+}
+
+.breadcrumb-font {
+    font-size: 14px;
+}
+
+/* Style for tablet */
+@media only screen and (max-width: 768px) {
+    .breadcrumb-font {
+        font-size: 12px;
+    }
+
+    .bsc-breadcrumb-item-first .bsc-breadcrumb-link {
+        font-size: inherit !important;
+    }
+}
+
+/* Style for mobile phone */
+@media only screen and (max-width: 576px) {
+    .breadcrumb-font {
+        font-size: 10px;
+    }
+
+    .bsc-breadcrumb-item-first .bsc-breadcrumb-link {
+        font-size: inherit !important;
+    }
+}

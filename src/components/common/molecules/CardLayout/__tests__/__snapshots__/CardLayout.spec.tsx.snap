@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders correctly 1`] = `
+<div
+  className="card"
+  style={
+    Object {
+      "flex": "1 1 30%",
+    }
+  }
+>
+  <div
+    className="card-content-data"
+  >
+    <div
+      className="card-content-wrapper"
+    >
+      <div>
+        Hello
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card renders correctly 2`] = `
+<div
+  className="card-layout"
+  style={
+    Object {
+      "flex": "1 1 30%",
+    }
+  }
+>
+  <div
+    className="card"
+    style={
+      Object {
+        "flex": "1 1 30%",
+      }
+    }
+  >
+    <div
+      className="card-content-data"
+    >
+      <div
+        className="card-content-wrapper"
+      >
+        <div>
+          Hello
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` ProductDashboardPresenter renders correctly 1`] = `
+<div
+  className="dashboard-wrapper"
+>
+  <CardLayout
+    className="dashboard-card-layout"
+    width={100}
+  >
+    <ProductFiltersPresenter
+      setSelectedProduct={[Function]}
+    />
+    <AccumulatedProductCostPresenter />
+    <DeploymentFrequencyPerProductPresenter />
+    <CardLayout
+      width={100}
+    >
+      <CostPerProductPresenter />
+      <CpuUtilizationPresenter />
+    </CardLayout>
+  </CardLayout>
+</div>
+`;

@@ -1,0 +1,20 @@
+query ResourceConsumption(
+    $entityId: Long
+    $resourceType: ResourceTypeEnum
+    $entityType: QueryEntity
+    $toDate: LocalDate
+    $fromDate: LocalDate
+) {
+    resourceConsumption(
+        query: {
+            resourceType: $resourceType
+            entityId: $entityId
+            entityType: $entityType
+            toDate: $toDate
+            fromDate: $fromDate
+        }
+    ) {
+        projectId
+        usage
+    }
+}

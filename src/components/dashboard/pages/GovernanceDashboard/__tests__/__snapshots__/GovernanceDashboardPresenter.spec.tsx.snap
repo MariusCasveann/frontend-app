@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` GovernanceDashboardPresenter renders correctly 1`] = `
+<div
+  className="dashboard-wrapper"
+>
+  <GovernanceFilterPresenter />
+  <CardLayout
+    className="dashboard-card-layout"
+    width={100}
+  >
+    <GoogleCostPresenter />
+    <DomainCostPresenter />
+    <DeploymentFrequencyPresenter />
+  </CardLayout>
+</div>
+`;

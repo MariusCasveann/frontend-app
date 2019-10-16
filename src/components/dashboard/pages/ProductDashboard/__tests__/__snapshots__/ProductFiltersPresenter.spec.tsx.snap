@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductFiltersPresenter renders correctly 1`] = `
+<Card
+  title="Filter"
+  width={100}
+>
+  <FiltersPresenter />
+  <Apollo(Connect(_default))
+    onProductSelected={[Function]}
+    selectedProduct={
+      Object {
+        "__typename": "LightProductDTO",
+        "id": 50051,
+        "logo": null,
+        "name": "a",
+      }
+    }
+  />
+</Card>
+`;

@@ -1,0 +1,15 @@
+.dashboard-wrapper {
+    background-color: #eeeeee;
+}
+
+.dashboard-wrapper .card-layout {
+    margin: 0px auto;
+}
+
+.bsc-page-layout {
+    height: 100%;
+}
+
+.bsc-page-layout__content {
+    max-height: calc(100vh - 100px);
+}

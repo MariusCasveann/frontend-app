@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTeamMembersPresenter should return the expected output when addTeamMembers is false 1`] = `null`;
+
+exports[`AddTeamMembersPresenter should return the expected output when addTeamMembers is true 1`] = `
+<Modal
+  confirmLoading={false}
+  maskTransitionName="fade"
+  okType="primary"
+  onCancel={[Function]}
+  onOk={[MockFunction]}
+  title="Add team members"
+  transitionName="zoom"
+  visible={true}
+  width={520}
+>
+  <Form
+    className="team-form"
+    colon={true}
+    hideRequiredMark={false}
+    layout="vertical"
+    onSubmit={[Function]}
+  >
+    <FormItem
+      hasFeedback={false}
+      label="Team members"
+      wrapperCol={
+        Object {
+          "span": 24,
+        }
+      }
+    />
+  </Form>
+</Modal>
+`;

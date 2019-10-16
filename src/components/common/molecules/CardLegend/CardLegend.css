@@ -1,0 +1,27 @@
+.row-rect {
+    display: inline-block;
+    margin-right: 10px;
+    width: 35px;
+    height: 15px;
+}
+
+.legend-container {
+    max-height: 400px;
+    align-content: flex-start;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+}
+
+.legend-container div.ant-typography {
+    grid-template-columns: 1fr 8fr;
+    align-items: start;
+    margin-bottom: 0.2rem;
+    margin-right: 1em;
+}
+
+/* Style for mobile phone */
+@media only screen and (max-width: 1642px) {
+    .legend-container {
+        display: inline-table !important;
+    }
+}

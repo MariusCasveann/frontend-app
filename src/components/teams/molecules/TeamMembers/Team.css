@@ -1,0 +1,51 @@
+.ant-btn-primary.add-member-button {
+    float: right;
+    background-color: var(--bo-color-interactive);
+    border-color: none;
+}
+
+.ant-btn-primary.add-member-button:hover {
+    background-color: var(--bo-color-hover);
+}
+
+.member-action-button button {
+    color: var(--bo-color-interactive);
+}
+
+.member-action-button .ant-btn-link {
+    border: none;
+}
+
+.member-action-button button:hover {
+    color: var(--bo-color-hover);
+}
+
+.member-action-button .ant-btn-link.ant-btn-sm {
+    padding: 0px;
+}
+
+.product-owner-name {
+    padding-left: 30px;
+    padding-right: 10px;
+    color: var(--font-color-copy);
+}
+
+.product-owner-label {
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: var(--font-color-copy);
+}
+
+.product-owner-card {
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-bottom: 30px;
+}
+
+.card-title {
+    color: var(--font-color-copy);
+}
+
+.edit-icon.anticon-edit.anticon {
+    color: var(--bo-color-interactive);
+}

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminRoleButton when team memeber is admin renders revoke right button 1`] = `
+<Button
+  size="small"
+  type="link"
+>
+  Revoke admin role
+</Button>
+`;
+
+exports[`AdminRoleButton when team memeber is not an admin renders assign right button 1`] = `
+<Button
+  size="small"
+  type="link"
+>
+  Assign admin role
+</Button>
+`;

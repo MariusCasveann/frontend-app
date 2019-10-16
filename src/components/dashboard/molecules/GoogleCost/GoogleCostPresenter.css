@@ -1,0 +1,41 @@
+.google-cost-card {
+    display: flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.google-cost-card .numbers-container {
+    padding-left: 20px;
+    padding-top: 20px;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.google-cost-card .numbers-container .ant-typography {
+    margin-bottom: 0.1em;
+}
+
+.google-cost-card .chart {
+    padding: 15px 15px 15px;
+    flex: 1;
+    display: block;
+    min-height: 250px;
+    min-width: 320px;
+}
+
+/* Style for mobile phone */
+@media only screen and (max-width: 576px) {
+    .google-cost-card {
+        flex-direction: column;
+    }
+
+    .google-cost-card .chart {
+        max-width: 320px;
+    }
+
+    .google-cost-card .chart {
+        padding: 5px 5px 5px;
+    }
+}

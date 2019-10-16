@@ -1,0 +1,29 @@
+query QueryCurrentUser {
+    currentUser {
+        activated
+        createdBy
+        createdDate
+        email
+        firstName
+        id
+        imageContent
+        langKey
+        lastModifiedBy
+        lastModifiedDate
+        lastName
+        login
+        roles {
+            id
+            name
+            readOnly
+            concretePermissions {
+                permissionType
+                id
+                entityType
+                entityId
+            }
+        }
+        staticPictureId
+        subscribedToNewsletter
+    }
+}

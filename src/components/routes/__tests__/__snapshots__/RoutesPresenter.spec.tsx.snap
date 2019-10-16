@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoutesPresenter renders correctly 1`] = `
+<_default
+  allowedRoutes={Array []}
+  selectedProduct={
+    Object {
+      "__typename": "LightProductDTO",
+      "id": 50051,
+      "logo": null,
+      "name": "a",
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        path="*"
+      />
+    </Switch>
+  </Router>
+</_default>
+`;

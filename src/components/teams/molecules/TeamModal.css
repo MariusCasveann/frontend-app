@@ -1,0 +1,12 @@
+.ant-modal-footer .ant-btn-primary {
+    background-color: var(--bo-color-interactive);
+    border-color: unset;
+}
+
+.ant-modal-footer .ant-btn-primary:hover {
+    background-color: var(--bo-color-hover);
+}
+
+.ant-modal-footer .ant-btn {
+    width: 100px;
+}

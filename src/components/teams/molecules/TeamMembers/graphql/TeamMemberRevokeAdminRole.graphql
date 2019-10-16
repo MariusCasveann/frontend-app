@@ -1,0 +1,3 @@
+mutation RevokeUserProductAdmin($productId: Long, $userId: Long) {
+    revokeUserProductAdmin(productId: $productId, userId: $userId)
+}
