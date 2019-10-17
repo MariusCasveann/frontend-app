@@ -2,6 +2,7 @@
 import UserProfile from '../../authentication/molecules/UserProfile/UserProfile';
 import { ComponentClass, FunctionComponent } from 'react';
 import PageNotFound from '../atoms/PageNotFound';
+import NewDashboard from '../atoms/NewDashboard';
 
 // constants
 import {
@@ -59,6 +60,7 @@ const USERS_PATH = '/users';
 const PRODUCT_DETAILS_PATH = '/product-details';
 const SERVICE_SECTION_PATH = '/service-section';
 const EXTERNAL_TOOLS_PATH = '/external-tools';
+const NEW_DASHBOARD_PATH = '/new-dashboard';
 
 export interface RouteI {
     allowedRoles: string[];
@@ -213,6 +215,12 @@ export const routes: RouteI[] = [
         component: PageNotFound
     },
     {
+        allowedRoles: [ALWAYS],
+        title: 'Dashboard',
+        path: NEW_DASHBOARD_PATH,
+        component: NewDashboard
+    },
+    {
         allowedRoles: ALLOWED_ROUTES_FOR_PRODUCT,
         title: 'PageNotFound',
         path: DOMAIN_PATH,
@@ -327,6 +335,11 @@ export const navigationOptions: Navigation[] = [
         icon: 'appstore',
         label: 'Service Catalogue',
         navLink: SERVICE_CATALOGUE_PATH
+    },
+    {
+        icon: 'laptop',
+        label: 'New Dashboard',
+        navLink: NEW_DASHBOARD_PATH
     },
     {
         icon: 'appstore',
