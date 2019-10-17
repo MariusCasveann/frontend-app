@@ -1,7 +1,7 @@
 import * as React from 'react';
 // import { Flyout, Icon } from 'backoffice-shared-components';
-import { LogoutButtonPresenter } from './../../../authentication';
-import { Button } from 'antd';
+// import { LogoutButtonPresenter } from './../../../authentication';
+// import { Button } from 'antd';
 import './UserMenu.css';
 import { createHashHistory } from 'history';
 import { QueryCurrentUser_currentUser } from '../UserProfile/graphql/__generated__/QueryCurrentUser';
@@ -12,9 +12,9 @@ interface UserMenuPresenter {
     currentUser: QueryCurrentUser_currentUser;
 }
 
-const redirectToProfilePage = () => {
-    history.push(`/user-edit`);
-};
+// const redirectToProfilePage = () => {
+//     history.push(`/user-edit`);
+// };
 
 export default ({ currentUser }: UserMenuPresenter) => {
     if (currentUser) {

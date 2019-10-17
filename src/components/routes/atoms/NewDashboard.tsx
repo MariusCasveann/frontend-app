@@ -1,3 +1,5 @@
-import React from 'react';
+import * as React from 'react';
 
-export default () => <div className="dashboard-wrapper">New Dashboard here</div>;
+export default () => {
+    return <div className="dashboard-wrapper">New Dashboard here</div>;
+};
