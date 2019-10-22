@@ -14,18 +14,13 @@ export default (props: testProps) => {
     const [show, setShow] = useState<boolean>(false);
 
     useEffect(() => {
-        text();
-        // console.log('apel functia text()');
-    }, [show]);
-
-    useEffect(() => {
         if (contor > 5) {
             setShow(true);
         } else {
             setShow(false);
         }
         // console.log('check contor change: ', contor);
-    });
+    }, [show]);
 
     const text = () => {
         if (show) {
