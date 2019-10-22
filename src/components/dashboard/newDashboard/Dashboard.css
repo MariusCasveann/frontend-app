@@ -1,0 +1,41 @@
+.color-red {
+    color: red;
+}
+
+.purple-border {
+    border: 1px solid purple;
+}
+
+.myBackground {
+    background-color: slategrey;
+}
+
+.bg-lightgrey {
+    background-color: lightgray;
+}
+
+.bg-lightblue {
+    background-color: rgb(27, 177, 182);
+}
+
+.home-btn:hover {
+    color: black;
+}
+
+.border-collapse {
+    border-collapse: collapse;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.user:hover {
+    cursor: pointer;
+    background-color: rgb(204, 202, 202);
+    color: rgb(90, 16, 16);
+}
+
+.bg-user-edit {
+    background-color: rgba(90, 16, 16, 0.07);
+}

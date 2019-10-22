@@ -2,7 +2,7 @@
 import UserProfile from '../../authentication/molecules/UserProfile/UserProfile';
 import { ComponentClass, FunctionComponent } from 'react';
 import PageNotFound from '../atoms/PageNotFound';
-import NewDashboard from '../atoms/NewDashboard';
+import { NewDashboard } from '../../dashboard/newDashboard/NewDashboard';
 
 // constants
 import {
