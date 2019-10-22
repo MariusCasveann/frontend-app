@@ -22,44 +22,6 @@ export const NewDashboard = () => {
         number: 100
     };
 
-    // const dataSource = [
-    //     {
-    //         key: '1',
-    //         name: 'Mike',
-    //         age: 32,
-    //         address: '10 Downing Street',
-    //     },
-    //     {
-    //         key: '2',
-    //         name: 'John',
-    //         age: 42,
-    //         address: '10 Downing Street',
-    //     },
-    // ];
-
-    // const columns = [
-    //     {
-    //         title: 'Name',
-    //         dataIndex: 'name',
-    //         key: 'name',
-    //     },
-    //     {
-    //         title: 'Age',
-    //         dataIndex: 'age',
-    //         key: 'age',
-    //     },
-    //     {
-    //         title: 'Address',
-    //         dataIndex: 'address',
-    //         key: 'address',
-    //     },
-    //     {
-    //         title: 'Actions',
-    //         dataIndex: 'actions',
-    //         key: 'actions'
-    //     },
-    // ];
-
     return (
         <UserProvider value={data}>
             <div className="bg-lightgrey">
@@ -77,10 +39,7 @@ export const NewDashboard = () => {
                 <h3 style={{ textAlign: 'center' }}>Users list</h3>
                 <Header />
                 <MyTable />
-
-                {/* import Table from antd when use <Table /> */}
-                {/* <Table dataSource={dataSource} columns={columns} /> */}
-                {/* <TestComponent age={22} /><hr/> */}
+                {/* <TestComponent age={22} /> */}
             </div>
         </UserProvider>
     );
