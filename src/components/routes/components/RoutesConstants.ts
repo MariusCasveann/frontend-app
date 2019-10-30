@@ -3,6 +3,7 @@ import UserProfile from '../../authentication/molecules/UserProfile/UserProfile'
 import { ComponentClass, FunctionComponent } from 'react';
 import PageNotFound from '../atoms/PageNotFound';
 import { NewDashboard } from '../../dashboard/newDashboard/NewDashboard';
+import { EditUserPage } from '../../dashboard/newDashboard/components/EditUserPage';
 
 // constants
 import {
@@ -61,6 +62,7 @@ const PRODUCT_DETAILS_PATH = '/product-details';
 const SERVICE_SECTION_PATH = '/service-section';
 const EXTERNAL_TOOLS_PATH = '/external-tools';
 const NEW_DASHBOARD_PATH = '/new-dashboard';
+const EDIT_USER_PATH = '/new-dashboard/edit-user/:name'; // :title  - marchez o valoare dinamica
 
 export interface RouteI {
     allowedRoles: string[];
@@ -219,6 +221,12 @@ export const routes: RouteI[] = [
         title: 'Dashboard',
         path: NEW_DASHBOARD_PATH,
         component: NewDashboard
+    },
+    {
+        allowedRoles: [ALWAYS],
+        title: 'Edit user',
+        path: EDIT_USER_PATH,
+        component: EditUserPage
     },
     {
         allowedRoles: ALLOWED_ROUTES_FOR_PRODUCT,

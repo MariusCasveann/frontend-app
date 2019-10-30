@@ -1,12 +1,44 @@
 export interface UserType {
+    id: number;
+    firstName: string;
+    lastName: string;
+    username?: string;
     country: string;
     activated: boolean;
     email: string;
-    firstName: string;
-    id: number;
-    lastName: string;
     subscribedToNewsletter: boolean;
+    phoneNumber?: string | number | null | undefined;
+    nationality?: string;
+    picture?: any;
+    dateOfBirth?: string | undefined | any;
+    avatar?: any;
+    languages?: string[];
+    addresses?: AddressType[] | undefined;
+    imageUrl?: string;
 }
+
+export interface AddressType {
+    country: string;
+    city: string;
+    street: string;
+    number: number;
+}
+
+interface TableHeaderType {
+    firstname: string;
+    lastname: string;
+    country: string;
+    id: string;
+    actions: string;
+}
+
+export const tableHeader: TableHeaderType = {
+    firstname: 'Firstname',
+    lastname: 'Lastname',
+    country: 'Country',
+    id: 'ID',
+    actions: 'Actions'
+};
 
 export const mockCurrentUsers: UserType[] = [
     {
@@ -16,7 +48,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'John',
         id: 10,
         lastName: 'Doe',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Italy',
@@ -25,7 +62,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Paul',
         id: 20,
         lastName: 'Williams',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Spain',
@@ -34,7 +76,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Roger',
         id: 30,
         lastName: 'Anderson',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Finland',
@@ -43,7 +90,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Kevin',
         id: 40,
         lastName: 'Hood',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Germany',
@@ -52,7 +104,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Mario',
         id: 50,
         lastName: 'Kenvelo',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Uruguay',
@@ -61,7 +118,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Michael',
         id: 60,
         lastName: 'Anderson',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Italy',
@@ -70,7 +132,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Juan',
         id: 70,
         lastName: 'Totti',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Spain',
@@ -79,7 +146,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Ali',
         id: 80,
         lastName: 'Jean',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Greece',
@@ -88,7 +160,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Brian',
         id: 90,
         lastName: 'Klopp',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'SUA',
@@ -97,7 +174,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Santiago',
         id: 100,
         lastName: 'Arabesque',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Germany',
@@ -106,7 +188,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Karl',
         id: 110,
         lastName: 'May',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Italy',
@@ -115,7 +202,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Maria',
         id: 120,
         lastName: 'Anderson',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Argentina',
@@ -124,7 +216,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Bruce',
         id: 130,
         lastName: 'Willis',
-        subscribedToNewsletter: true
+        subscribedToNewsletter: true,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Brasil',
@@ -133,7 +230,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Maximilian',
         id: 140,
         lastName: 'Dowe',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Greece',
@@ -142,7 +244,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'George',
         id: 150,
         lastName: 'Clean',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Argentina',
@@ -151,7 +258,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Brian',
         id: 160,
         lastName: 'John',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Italy',
@@ -160,7 +272,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Michael',
         id: 170,
         lastName: 'Kroos',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Uruguay',
@@ -169,7 +286,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Kevin',
         id: 180,
         lastName: 'Dalin',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Germany',
@@ -178,7 +300,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'John',
         id: 190,
         lastName: 'Willis',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Italy',
@@ -187,7 +314,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Alfonso',
         id: 200,
         lastName: 'Jean',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Germany',
@@ -196,7 +328,12 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'Michael',
         id: 210,
         lastName: 'Andersonen',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     },
     {
         country: 'Greece',
@@ -205,14 +342,27 @@ export const mockCurrentUsers: UserType[] = [
         firstName: 'George',
         id: 220,
         lastName: 'Cleans',
-        subscribedToNewsletter: false
+        subscribedToNewsletter: false,
+        username: '',
+        phoneNumber: null,
+        nationality: '',
+        picture: '',
+        dateOfBirth: ''
     }
 ];
 
-export const tableHeader = {
-    firstname: 'Firstname',
-    lastname: 'Lastname',
-    country: 'Country',
-    id: 'ID',
-    actions: 'Actions'
-};
+export const nationalities: string[] = ['Romanian', 'German', 'Italian', 'Spanish', 'Hungarian', 'French', 'English'];
+
+export const foreignLanguages: string[] = [
+    'Romanian',
+    'German',
+    'Italian',
+    'Spanish',
+    'Hungarian',
+    'French',
+    'English'
+];
+
+export const countries: string[] = ['Romania', 'Germany', 'Spain', 'Italy', 'Greece', 'Chile', 'China'];
+
+export const cities: string[] = ['Cluj-Napoca', 'Munchen', 'Madrid', 'Venice', 'Athene', 'Beijing'];
