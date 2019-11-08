@@ -41,13 +41,14 @@ export const ChatApplication = () => {
     const [users, setUsers] = useState<UserType[]>(mockUsers);
     const [currentUser, setCurrentUser] = useState<UserType>(mockCurrentUser);
     const [currentReceiverUser, setCurrentReceiverUser] = useState<UserType | null>(null);
-    const [selectedConversation, setSelectedConversation] = useState<ConversationType[] | null>(null);
+    const [selectedConversation, setSelectedConversation] = useState<ConversationType | null>(null);
     const [selectedMessages, setSelectedMessages] = useState<MessageType[]>(
         mockMessages.sort((a, b) => (Number(a.timestamp) < Number(b.timestamp) ? 1 : -1))
     );
     const [inputValue, setInputValue] = useState<string>('');
     const [removeConversationModal, setRemoveConversationModal] = useState<boolean>(false);
     const [recentMessage, setRecentMessage] = useState<MessageType | null>(null);
+    const usersTimestamp: any = [];
 
     useEffect(() => {
         setInputValue('');
@@ -56,21 +57,40 @@ export const ChatApplication = () => {
 
     const setConversation = (user: UserType) => () => {
         const { id } = user;
-        const filteredConversation = mockConversations.filter(
+        const filteredConversation: any = mockConversations.find(
             conversation =>
                 (conversation.idUser1 === id && conversation.idUser2 === currentUser.id) ||
                 (conversation.idUser2 === id && conversation.idUser1 === currentUser.id)
         );
         setCurrentReceiverUser(user);
         setSelectedConversation(filteredConversation);
-        setSelectedMessages(mockMessages.filter(message => message.conversationId === filteredConversation[0].id));
+        setSelectedMessages(mockMessages.filter(message => message.conversationId === filteredConversation.id));
     };
+
+    users.forEach(user => {
+        const userMessages = mockMessages.filter(message => {
+            if (
+                (message.idSender === user.id && message.idReceiver === currentUser.id) ||
+                (message.idSender === currentUser.id && message.idReceiver === user.id)
+            ) {
+                return message;
+            }
+        });
+
+        usersTimestamp.push({
+            user: user,
+            timestamp: (userMessages && userMessages[0] && userMessages[0].timestamp) || 0,
+            message: (userMessages && userMessages[0] && userMessages[0].message) || ''
+        });
+    });
+
+    usersTimestamp.sort((a: any, b: any) => Number(b.timestamp) - Number(a.timestamp));
 
     const removeConversation = () => {
         if (removeConversationModal && currentReceiverUser) {
             return (
                 <ConfirmModal
-                    onCancel={() => setRemoveConversationModal(false)}
+                    onCancel={onCancel}
                     onOk={deleteConversation}
                     visible={true}
                     text={`Are you sure you want to delete conversation with ${currentReceiverUser.firstname}-${currentReceiverUser.lastname}`}
@@ -79,6 +99,11 @@ export const ChatApplication = () => {
                 />
             );
         }
+    };
+
+    const onCancel = () => {
+        setRemoveConversationModal(false);
+        message.warning({ content: 'Action canceled', duration: 3 });
     };
 
     const convertTimestamp = (timestamp: string) => {
@@ -101,7 +126,6 @@ export const ChatApplication = () => {
                 msg.id === recentMessage.id ? { ...msg, message: inputValue } : msg
             );
             setSelectedMessages(newData);
-            setRecentMessage(null);
         } else {
             mockMessages.push({
                 id: Number((Math.random() * 1000).toFixed()),
@@ -109,12 +133,12 @@ export const ChatApplication = () => {
                 idReceiver: currentReceiverUser && currentReceiverUser.id,
                 timestamp: String(Math.floor(Date.now() / 1000 + 7200)),
                 message: inputValue,
-                conversationId: selectedConversation && selectedConversation[0].id
+                conversationId: selectedConversation && selectedConversation.id
             });
             mockMessages.sort((a, b) => (Number(a.timestamp) < Number(b.timestamp) ? 1 : -1));
             setSelectedMessages(
                 mockMessages.filter(
-                    message => selectedConversation && message.conversationId === selectedConversation[0].id
+                    message => selectedConversation && message.conversationId === selectedConversation.id
                 )
             );
         }
@@ -149,7 +173,7 @@ export const ChatApplication = () => {
         }
         setSelectedMessages(
             mockMessages.filter(
-                msg => selectedConversation && Number(msg.conversationId) === Number(selectedConversation[0].id)
+                msg => selectedConversation && Number(msg.conversationId) === Number(selectedConversation.id)
             )
         );
         setRecentMessage(null);
@@ -165,14 +189,14 @@ export const ChatApplication = () => {
         for (let i = 0; i < mockMessages.length; i++) {
             // debugger
             for (let j = 0; j < mockMessages.length; j++) {
-                if (selectedConversation && selectedConversation[0].id === mockMessages[j].conversationId) {
+                if (selectedConversation && selectedConversation.id === mockMessages[j].conversationId) {
                     mockMessages.splice(j, 1);
                 }
             }
         }
         setSelectedMessages(
             mockMessages.filter(
-                msg => selectedConversation && Number(msg.conversationId) === Number(selectedConversation[0].id)
+                msg => selectedConversation && Number(msg.conversationId) === Number(selectedConversation.id)
             )
         );
         setRemoveConversationModal(false);
@@ -217,16 +241,19 @@ export const ChatApplication = () => {
             <ChatHeader currentUser={currentUser} />
             <div style={{ display: 'flex' }}>
                 <div style={navMenuStyle}>
-                    {users.map((user, index) => {
+                    {usersTimestamp.map((user: any, index: number) => {
                         return (
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <p
                                     className={classnames(
-                                        { 'active-user': currentReceiverUser && currentReceiverUser.id === user.id },
+                                        {
+                                            'active-user':
+                                                currentReceiverUser && currentReceiverUser.id === user.user.id
+                                        },
                                         'user-item'
                                     )}
                                     key={index}
-                                    onClick={setConversation(user)}
+                                    onClick={setConversation(user.user)}
                                     style={{
                                         backgroundColor: '#E9E0D0',
                                         marginRight: 5,
@@ -236,14 +263,14 @@ export const ChatApplication = () => {
                                         width: '90%'
                                     }}
                                 >
-                                    {user.firstname} - {user.lastname}
+                                    {user.user.firstname} - {user.user.lastname}
                                 </p>
                                 {(selectedConversation &&
-                                    (selectedConversation[0].idUser1 === user.id &&
-                                        selectedConversation[0].idUser2 === currentUser.id)) ||
+                                    (selectedConversation.idUser1 === user.user.id &&
+                                        selectedConversation.idUser2 === currentUser.id)) ||
                                 (selectedConversation &&
-                                    selectedConversation[0].idUser2 === user.id &&
-                                    selectedConversation[0].idUser1 === currentUser.id) ? (
+                                    selectedConversation.idUser2 === user.user.id &&
+                                    selectedConversation.idUser1 === currentUser.id) ? (
                                     <Icon
                                         style={{ marginTop: 5 }}
                                         className="del-conv-btn opacity-30"
