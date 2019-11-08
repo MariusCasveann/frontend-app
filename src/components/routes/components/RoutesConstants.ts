@@ -4,6 +4,7 @@ import { ComponentClass, FunctionComponent } from 'react';
 import PageNotFound from '../atoms/PageNotFound';
 import { NewDashboard } from '../../dashboard/newDashboard/NewDashboard';
 import { EditUserPage } from '../../dashboard/newDashboard/components/EditUserPage';
+import { ChatApplication } from '../../dashboard/newDashboard/chatApp/components/ChatApplication';
 
 // constants
 import {
@@ -63,6 +64,7 @@ const SERVICE_SECTION_PATH = '/service-section';
 const EXTERNAL_TOOLS_PATH = '/external-tools';
 const NEW_DASHBOARD_PATH = '/new-dashboard';
 const EDIT_USER_PATH = '/new-dashboard/edit-user/:name'; // :title  - marchez o valoare dinamica
+const CHAT_APP = '/chat-app';
 
 export interface RouteI {
     allowedRoles: string[];
@@ -224,6 +226,12 @@ export const routes: RouteI[] = [
     },
     {
         allowedRoles: [ALWAYS],
+        title: 'Chat application',
+        path: CHAT_APP,
+        component: ChatApplication
+    },
+    {
+        allowedRoles: [ALWAYS],
         title: 'Edit user',
         path: EDIT_USER_PATH,
         component: EditUserPage
@@ -348,6 +356,11 @@ export const navigationOptions: Navigation[] = [
         icon: 'laptop',
         label: 'New Dashboard',
         navLink: NEW_DASHBOARD_PATH
+    },
+    {
+        icon: 'message',
+        label: 'Chat',
+        navLink: CHAT_APP
     },
     {
         icon: 'appstore',
