@@ -41,7 +41,7 @@ export const Table: React.FC = props => {
                     onCancel={onCancel}
                     onOk={onOk}
                     visible={true}
-                    text={`Are you sure you want to delete ${theFullName}`}
+                    text={`Are you sure you want to delete ${theFullName}?`}
                     title={'Delete user'}
                 />
             );

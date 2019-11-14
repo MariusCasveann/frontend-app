@@ -93,7 +93,7 @@ export const ChatApplication = () => {
                     onCancel={onCancel}
                     onOk={deleteConversation}
                     visible={true}
-                    text={`Are you sure you want to delete conversation with ${currentReceiverUser.firstname}-${currentReceiverUser.lastname}`}
+                    text={`Are you sure you want to delete conversation with ${currentReceiverUser.firstname}-${currentReceiverUser.lastname}?`}
                     subtext={'This action will remove all messages with this user.'}
                     title={'Delete conversation'}
                 />
