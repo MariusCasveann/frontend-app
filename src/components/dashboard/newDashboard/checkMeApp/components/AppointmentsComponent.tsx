@@ -39,7 +39,7 @@ export const Appointments = (props: any) => {
         localStorage.removeItem('userLogged');
     };
 
-    const renderUserSpecialization = (userSpecializationId: any) => {
+    const renderUserSpecialization = (userSpecializationId: number) => {
         const specialization = mockSpecializations.find(specialization => specialization.id === userSpecializationId);
 
         if (currentUser && specialization) {

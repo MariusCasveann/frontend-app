@@ -84,8 +84,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 2,
         cityId: 1,
         clinicId: 1,
-        status: 'New - for Dr. AC - patient david',
-        // status: 'Cancelled',
+        status: 'Cancelled',
         startHour: 8,
         disponibilityIntervalId: 3
     },
