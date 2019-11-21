@@ -20,13 +20,13 @@ export interface CityType {
 }
 
 export interface SpecializationType {
-    id: number;
+    id: number | undefined;
     specialization: string;
 }
 
 export interface ClinicType {
     id: number;
-    name: string;
+    clinic: string;
     cityId: number;
 }
 
@@ -48,13 +48,14 @@ export interface SpecializationPerClinicType {
 export interface AppointmentType {
     id: number;
     userId: number;
-    medicId: number;
-    cityId: number;
-    clinicId: number;
+    medicId: number | null | undefined;
+    cityId: number | null | undefined;
+    clinicId: number | null | undefined;
     status: string;
     startHour: number;
     disponibilityIntervalId: number;
     observations?: string;
+    specialization?: string;
 }
 
 export const mockAppointments: AppointmentType[] = [
@@ -237,32 +238,32 @@ export const mockSpecializations: SpecializationType[] = [
 export const mockClinics: ClinicType[] = [
     {
         id: 1,
-        name: 'Clinica Unu Cluj',
+        clinic: 'Clinica Unu Cluj',
         cityId: 1
     },
     {
         id: 2,
-        name: 'Clinica Doi Cluj ',
+        clinic: 'Clinica Doi Cluj ',
         cityId: 1
     },
     {
         id: 3,
-        name: 'Clinica Bucuresti',
+        clinic: 'Clinica Bucuresti',
         cityId: 2
     },
     {
         id: 4,
-        name: 'Clinica Sibiu',
+        clinic: 'Clinica Sibiu',
         cityId: 3
     }
 ];
 
 export const mockSpecializationPerClinic: SpecializationPerClinicType[] = [
-    {
-        id: 1,
-        specializationId: 1,
-        clinicId: 1
-    },
+    // {
+    //     id: 1,
+    //     specializationId: 1,
+    //     clinicId: 1
+    // },
     {
         id: 2,
         specializationId: 2,
@@ -273,11 +274,11 @@ export const mockSpecializationPerClinic: SpecializationPerClinicType[] = [
         specializationId: 3,
         clinicId: 1
     },
-    {
-        id: 4,
-        specializationId: 1,
-        clinicId: 2
-    },
+    // {
+    //     id: 4,
+    //     specializationId: 1,
+    //     clinicId: 2
+    // },
     {
         id: 5,
         specializationId: 2,
@@ -306,16 +307,6 @@ export const mockSpecializationPerClinic: SpecializationPerClinicType[] = [
     {
         id: 10,
         specializationId: 1,
-        clinicId: 4
-    },
-    {
-        id: 11,
-        specializationId: 2,
-        clinicId: 4
-    },
-    {
-        id: 12,
-        specializationId: 3,
         clinicId: 4
     }
 ];
@@ -419,8 +410,8 @@ export const mockUsers: UserType[] = [
         username: 'susan',
         password: 'zece',
         roleId: 1,
-        clinicId: 3,
-        specializationId: 3
+        clinicId: 4,
+        specializationId: 1
     },
     // Patients
     {
@@ -442,7 +433,7 @@ export const mockUsers: UserType[] = [
     {
         id: 13,
         firstname: 'Amy',
-        lastname: 'Ho',
+        lastname: 'Henry',
         username: 'amy',
         password: 'three',
         roleId: 2

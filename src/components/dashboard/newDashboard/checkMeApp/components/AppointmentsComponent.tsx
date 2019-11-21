@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { Button, Icon, Input } from 'antd';
+import { useState } from 'react';
+import { Button, Icon } from 'antd';
 import moment from 'moment';
 import ConfirmModal from '../../../../common/molecules/Modals/ConfirmModal';
+import { NewAppointment } from './NewAppointmentComponent';
 import {
     mockAppointments,
     mockCities,
@@ -29,7 +30,7 @@ export const Appointments = (props: any) => {
             : mockAppointments.filter(item => item.userId === currentUser.id)
     );
     const [selectedAppointment, setSelectedAppointment] = useState<AppointmentType | null>(null);
-    const [appointmentModal, setAppointmentModal] = useState<boolean>(false);
+    const [appointmentModal, setAppointmentModal] = useState<boolean>(true);
     const [showHideCancelAppointmentModal, setShowHideCancelAppointmentModal] = useState<boolean>(false);
     const currentHour = Number(moment().format('HH'));
     const currentDate = moment().format('YYYY-MM-DD');
@@ -58,7 +59,7 @@ export const Appointments = (props: any) => {
                     const medic = mockUsers.find(user => user.id === item.medicId);
                     const specialization =
                         medic && mockSpecializations.find(speciality => speciality.id === medic.specializationId);
-                    const clinic = medic && mockClinics.find(clinic => clinic.id === medic.clinicId);
+                    const clinicOfAppointment = medic && mockClinics.find(clinic => clinic.id === medic.clinicId);
                     const interval = mockDisponibilityIntervals.find(
                         interval => interval.id === item.disponibilityIntervalId
                     );
@@ -72,7 +73,8 @@ export const Appointments = (props: any) => {
                     return (
                         <div
                             key={index}
-                            style={{ backgroundColor: 'seashell', marginBottom: 5, padding: 10, borderRadius: 5 }}
+                            // style={{ backgroundColor: 'seashell', marginBottom: 10, padding: 10, borderRadius: 5, boxShadow: '5px 5px 5px grey' }}
+                            style={{ backgroundColor: 'seashell', marginBottom: 10, padding: 10 }}
                         >
                             {currentUser && currentUser.roleId === 1 ? (
                                 <>
@@ -90,6 +92,10 @@ export const Appointments = (props: any) => {
                                             Number(item.startHour) + Number(interval.durationHours)}:00`}
                                     </p>
                                     <p>
+                                        <b>Observations: </b>
+                                        {item.observations || 'None'}
+                                    </p>
+                                    <p>
                                         <b>Status: </b>
                                         {checkIfDateIsExpired() ? 'Done' : item.status}
                                     </p>
@@ -102,7 +108,7 @@ export const Appointments = (props: any) => {
                                     </p>
                                     <p>
                                         <b>Clinic: </b>
-                                        {clinic && clinic.name}
+                                        {clinicOfAppointment && clinicOfAppointment.clinic}
                                     </p>
                                     <p>
                                         <b>Medic: </b>Dr. {medic && medic.firstname} {medic && medic.lastname}
@@ -115,6 +121,10 @@ export const Appointments = (props: any) => {
                                         <b>Time: </b>
                                         {`${item.startHour}:00 - ${interval &&
                                             Number(item.startHour) + Number(interval.durationHours)}:00`}
+                                    </p>
+                                    <p>
+                                        <b>Observations: </b>
+                                        {item.observations || 'None'}
                                     </p>
                                     <p>
                                         <b>Status: </b>
@@ -183,17 +193,17 @@ export const Appointments = (props: any) => {
         setSelectedAppointment(null);
     };
 
-    console.log('APPOINTMENTS: ', appointments);
-    console.log('MOCK APPOINTMENTS: ', mockAppointments);
-
     const addNewAppointment = () => {
         if (appointmentModal) {
             return (
                 <ConfirmModal
                     onCancel={onCancelAddAppointment}
-                    onOk={createAppointment}
+                    onOk={confirmCreateNewAppointment}
                     visible={true}
-                    text={newAppointmentBody()}
+                    text={
+                        //@ts-ignore
+                        <NewAppointment />
+                    }
                     title={'Create new appointment'}
                 />
             );
@@ -201,21 +211,13 @@ export const Appointments = (props: any) => {
     };
 
     const onCancelAddAppointment = () => {
+        console.log('Cancel Create New Appointment');
         setAppointmentModal(false);
     };
 
-    const createAppointment = () => {
-        console.log('Confirm');
+    const confirmCreateNewAppointment = () => {
+        console.log('Confirm Create New Appointment');
         setAppointmentModal(false);
-    };
-
-    // sa fie componenta separata - form
-    const newAppointmentBody = () => {
-        return (
-            <>
-                <Input placeholder="Patient name here" />
-            </>
-        );
     };
 
     return (
@@ -247,7 +249,8 @@ export const Appointments = (props: any) => {
                         width: '30%'
                     }}
                 >
-                    <h2 style={{ marginBottom: 30, borderBottom: '1px solid black', textAlign: 'center' }}>
+                    {/* <h2 style={{ backgroundColor: '#9c9c9c', borderRadius: 5, boxShadow: '5px 5px 5px grey', marginBottom: 30, textAlign: 'center' }}> */}
+                    <h2 style={{ marginBottom: 30, textAlign: 'center' }}>
                         <Icon type="solution" /> My appointments
                     </h2>
                     {getMyAppointments()}

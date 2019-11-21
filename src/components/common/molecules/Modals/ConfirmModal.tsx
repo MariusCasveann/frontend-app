@@ -12,7 +12,7 @@ export interface ConfirmModalProps {
 
 export default ({ onCancel, onOk, visible, text, title, subtext }: ConfirmModalProps) => (
     <Modal title={title} visible={visible} onOk={onOk} onCancel={onCancel}>
-        <p>{text}</p>
+        <div>{text}</div>
         {subtext ? (
             <b>
                 <Icon type="warning" style={{ marginRight: 5 }} />

@@ -76,7 +76,7 @@ const LoginForm = (props: any) => {
                     })(<Input placeholder="Username" maxLength={10} />)}
                 </Form.Item>
 
-                <Form.Item label="Password" required={true} key={'lastName'}>
+                <Form.Item label="Password" required={true} key={'password'}>
                     {getFieldDecorator(`password`, {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [
