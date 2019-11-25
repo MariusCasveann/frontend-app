@@ -6,20 +6,11 @@ import ConfirmModal from '../../../../common/molecules/Modals/ConfirmModal';
 import { NewAppointment } from './NewAppointmentComponent';
 import {
     mockAppointments,
-    mockCities,
     mockClinics,
     mockDisponibilityIntervals,
-    mockRoles,
     mockSpecializations,
-    mockSpecializationPerClinic,
     mockUsers,
-    AppointmentType,
-    CityType,
-    ClinicType,
-    RoleType,
-    SpecializationType,
-    SpecializationPerClinicType,
-    UserType
+    AppointmentType
 } from '../mockDataForCheckMe';
 
 export const Appointments = (props: any) => {
@@ -30,7 +21,8 @@ export const Appointments = (props: any) => {
             : mockAppointments.filter(item => item.userId === currentUser.id)
     );
     const [selectedAppointment, setSelectedAppointment] = useState<AppointmentType | null>(null);
-    const [appointmentModal, setAppointmentModal] = useState<boolean>(true);
+    const [appointmentModal, setAppointmentModal] = useState<boolean>(false);
+    const [callbackOnSubmit, setCallbackOnSubmit] = useState<boolean>(false);
     const [showHideCancelAppointmentModal, setShowHideCancelAppointmentModal] = useState<boolean>(false);
     const currentHour = Number(moment().format('HH'));
     const currentDate = moment().format('YYYY-MM-DD');
@@ -63,18 +55,37 @@ export const Appointments = (props: any) => {
                     const interval = mockDisponibilityIntervals.find(
                         interval => interval.id === item.disponibilityIntervalId
                     );
-                    const day = interval ? moment(interval.day) : '';
                     const checkIfDateIsExpired = () =>
                         interval &&
                         (currentDate > interval.day || (currentDate === interval.day && item.startHour <= currentHour))
                             ? true
                             : false;
+                    const renderMessageIfNoDateSelected = () => {
+                        if (interval) {
+                            return moment(interval.day).format('DD MMMM YYYY');
+                        }
+
+                        return `No available date`;
+                    };
+                    const renderMessageIfNoTimeSelected = () => {
+                        if (item.startHour) {
+                            return `${item.startHour}:00 - ${interval &&
+                                Number(item.startHour) + Number(interval.durationHours)}:00`;
+                        }
+
+                        return `Please contact the clinic by phone in order to set up a day`;
+                    };
 
                     return (
                         <div
                             key={index}
-                            // style={{ backgroundColor: 'seashell', marginBottom: 10, padding: 10, borderRadius: 5, boxShadow: '5px 5px 5px grey' }}
-                            style={{ backgroundColor: 'seashell', marginBottom: 10, padding: 10 }}
+                            style={{
+                                backgroundColor: 'seashell',
+                                marginBottom: 10,
+                                padding: 10,
+                                borderRadius: 5,
+                                boxShadow: '5px 5px 5px grey'
+                            }}
                         >
                             {currentUser && currentUser.roleId === 1 ? (
                                 <>
@@ -84,12 +95,11 @@ export const Appointments = (props: any) => {
                                     </p>
                                     <p>
                                         <b>Date: </b>
-                                        {interval && moment(interval.day).format('DD MMMM YYYY')}
+                                        {renderMessageIfNoDateSelected()}
                                     </p>
                                     <p>
                                         <b>Time: </b>
-                                        {`${item.startHour}:00 - ${interval &&
-                                            Number(item.startHour) + Number(interval.durationHours)}:00`}
+                                        {renderMessageIfNoTimeSelected()}
                                     </p>
                                     <p>
                                         <b>Observations: </b>
@@ -115,12 +125,11 @@ export const Appointments = (props: any) => {
                                     </p>
                                     <p>
                                         <b>Date: </b>
-                                        {interval && moment(interval.day).format('DD MMMM YYYY')}
+                                        {renderMessageIfNoDateSelected()}
                                     </p>
                                     <p>
                                         <b>Time: </b>
-                                        {`${item.startHour}:00 - ${interval &&
-                                            Number(item.startHour) + Number(interval.durationHours)}:00`}
+                                        {renderMessageIfNoTimeSelected()}
                                     </p>
                                     <p>
                                         <b>Observations: </b>
@@ -202,7 +211,12 @@ export const Appointments = (props: any) => {
                     visible={true}
                     text={
                         //@ts-ignore
-                        <NewAppointment />
+                        <NewAppointment
+                            currentUser={currentUser}
+                            callbackSetAppointments={setAppointments}
+                            callbackSetAppointmentModal={setAppointmentModal}
+                            callbackOnSubmit={callbackOnSubmit}
+                        />
                     }
                     title={'Create new appointment'}
                 />
@@ -211,13 +225,17 @@ export const Appointments = (props: any) => {
     };
 
     const onCancelAddAppointment = () => {
-        console.log('Cancel Create New Appointment');
         setAppointmentModal(false);
+        setCallbackOnSubmit(false);
     };
 
     const confirmCreateNewAppointment = () => {
-        console.log('Confirm Create New Appointment');
-        setAppointmentModal(false);
+        setCallbackOnSubmit(true);
+    };
+
+    const clickAddNewAppointmentButton = () => {
+        setAppointmentModal(true);
+        setCallbackOnSubmit(false);
     };
 
     return (
@@ -226,6 +244,19 @@ export const Appointments = (props: any) => {
                 <h2>
                     Welcome, {currentUser && currentUser.roleId === 1 ? 'Dr.' : ''}{' '}
                     {currentUser && currentUser.firstname}-{currentUser && currentUser.lastname}
+                    <Icon type="smile" style={{ marginLeft: 5, color: 'green' }} />
+                    <span
+                        style={{
+                            display: 'block',
+                            boxShadow: '0 0 3px black',
+                            fontSize: 14,
+                            backgroundColor: 'lightgreen',
+                            borderRadius: 3,
+                            textAlign: 'center'
+                        }}
+                    >
+                        Check me doctor
+                    </span>
                 </h2>
                 <Button type="danger" onClick={logout}>
                     <Icon type="poweroff" />
@@ -249,15 +280,22 @@ export const Appointments = (props: any) => {
                         width: '30%'
                     }}
                 >
-                    {/* <h2 style={{ backgroundColor: '#9c9c9c', borderRadius: 5, boxShadow: '5px 5px 5px grey', marginBottom: 30, textAlign: 'center' }}> */}
-                    <h2 style={{ marginBottom: 30, textAlign: 'center' }}>
+                    <h2
+                        style={{
+                            backgroundColor: '#9c9c9c',
+                            borderRadius: 5,
+                            boxShadow: '5px 5px 5px grey',
+                            marginBottom: 30,
+                            textAlign: 'center'
+                        }}
+                    >
                         <Icon type="solution" /> My appointments
                     </h2>
                     {getMyAppointments()}
                 </div>
                 <div>
                     {currentUser && currentUser.roleId === 2 ? (
-                        <Button type="primary" onClick={() => setAppointmentModal(true)}>
+                        <Button type="primary" onClick={clickAddNewAppointmentButton}>
                             <Icon type="plus" /> Add new appointment
                         </Button>
                     ) : null}

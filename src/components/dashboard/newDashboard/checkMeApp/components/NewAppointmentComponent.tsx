@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Button, Form, Icon, Input, message, Radio, Select } from 'antd';
+import moment from 'moment';
+import { Button, Form, Icon, message, Radio, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import {
     mockAppointments,
     mockCities,
     mockClinics,
     mockDisponibilityIntervals,
-    mockRoles,
     mockSpecializations,
     mockSpecializationPerClinic,
     mockUsers,
     AppointmentType,
     CityType,
     ClinicType,
-    RoleType,
+    DisponibilityIntervalType,
     SpecializationType,
     SpecializationPerClinicType,
     UserType
@@ -31,19 +31,26 @@ const formItemLayout = {
     }
 };
 
+const availableIntervalsLayout = {
+    wrapperCol: {
+        xs: { span: 10 },
+        sm: { span: 36 }
+    }
+};
+
+interface HourAvailabilityType {
+    hour: number;
+    available: boolean;
+}
+
 const NewAppointmentForm = (props: any) => {
-    const { form } = props;
-    const { getFieldDecorator, getFieldValue, getFieldsValue, resetFields, setFieldsValue } = form;
+    const { currentUser, callbackOnSubmit, callbackSetAppointments, callbackSetAppointmentModal, form } = props;
+    const { getFieldDecorator, getFieldValue, resetFields, setFieldsValue } = form;
 
     const [cities, setCities] = useState<CityType[] | null>(mockCities);
     const [specializations, setSpecializations] = useState<SpecializationType[] | null>(mockSpecializations);
     const [clinics, setClinics] = useState<ClinicType[] | null>(mockClinics);
     const [medics, setMedics] = useState<UserType[] | null>(mockUsers.filter(user => user.roleId === 1));
-
-    // const [cityFirst, setCityFirst] = useState<boolean>(false);
-    // const [clinicFirst, setClinicFirst] = useState<boolean>(false);
-    // const [specializationFirst, setSpecializationFirst] = useState<boolean>(false);
-    // const [medicFirst, setMedicFirst] = useState<boolean>(false);
 
     const selectedCityId = getFieldValue('cityId');
     const selectedCity = mockCities.find((item: CityType) => item.id === selectedCityId);
@@ -55,107 +62,205 @@ const NewAppointmentForm = (props: any) => {
     const selectedClinic = mockClinics.find((item: ClinicType) => item.id === selectedClinicId);
     const selectedMedicId = getFieldValue('medicId');
     const selectedMedic = medics && medics.find((item: UserType) => item.id === selectedMedicId);
+    const selectedDisponibilityIntervalId = getFieldValue('disponibilityIntervalId');
+    const selectedDisponibilityInterval = mockDisponibilityIntervals.find(
+        (item: DisponibilityIntervalType) => item.id === selectedDisponibilityIntervalId
+    );
     const selectedStartHour = getFieldValue('startHour');
     const selectedObservations = getFieldValue('observations');
     const filteredDisponibilityIntervals = mockDisponibilityIntervals.filter(
         interval => selectedMedic && interval.userId === selectedMedic.id
     );
+    const hoursForStart: HourAvailabilityType[] = [];
 
     useEffect(() => {
         checkSelectedCity();
     }, [selectedCity]);
 
-    // useEffect(() => {
-    //     checkSelectedSpecialization();
-    // }, [selectedSpecialization]);
+    useEffect(() => {
+        checkSelectedSpecialization();
+    }, [selectedSpecialization]);
 
-    // useEffect(() => {
-    //     checkSelectedClinic();
-    // }, [selectedClinic]);
+    useEffect(() => {
+        checkSelectedClinic();
+    }, [selectedClinic]);
 
     useEffect(() => {
         checkSelectedMedic();
     }, [selectedMedic]);
 
-    const checkSelectedCity = () => {
-        if (selectedSpecialization && selectedClinic && selectedMedic) {
-            return;
+    useEffect(() => {
+        if (callbackOnSubmit) {
+            submitForm();
         }
+    }, [callbackOnSubmit]);
 
-        if (selectedCity) {
-            const selectedClinics = mockClinics.filter(item => item.cityId === selectedCity.id);
-            // selectedClinics && selectedClinics.length === 1 && setFieldsValue({'clinic': selectedClinics[0].clinic});
-            selectedClinics && setClinics(selectedClinics);
+    const checkSelectedCity = () => {
+        // if (selectedMedic) {
+        //     return;
+        // } else if (selectedCity) {
+        //     const selectedClinics = mockClinics.filter(item => item.cityId === selectedCity.id);
+        //     // selectedClinics && selectedClinics.length === 1 && setFieldsValue({'clinic': selectedClinics[0].clinic});
+        //     selectedClinics && setClinics(selectedClinics);
+        //     let filteredSpecializationsArr: any = [];
+        //     let filteredMedicsArr: any = [];
+        //     selectedClinics.forEach(clinic => {
+        //         const specializationPerClinic = mockSpecializationPerClinic.filter(item => item.clinicId === clinic.id);
+        //         // console.log('specializationPerClinic', specializationPerClinic);
+        //         specializationPerClinic.forEach(item => {
+        //             const filteredSpecializations = mockSpecializations.find(special => special.id === item.specializationId);
+        //             // console.log('filteredSpecializations', filteredSpecializations);
+        //             filteredSpecializationsArr.push(filteredSpecializations);
+        //             filteredSpecializationsArr = filteredSpecializationsArr.filter((item: any, index: number) => filteredSpecializationsArr.indexOf(item) === index);
+        //             setSpecializations(filteredSpecializationsArr);
+        //             console.log('filteredSpecializationsArr', filteredSpecializationsArr);
+        //         });
+        //     });
+        //     const filteredMedics = mockUsers.filter(user => selectedSpecialization && selectedClinic && user.specializationId === selectedSpecialization.id && user.clinicId === selectedClinic.id);
+        //     setMedics(filteredMedics);
+        //     // filteredSpecializationsArr.forEach((element: SpecializationType) => {
+        //     //     const filteredMedics = mockUsers.filter(user => user.specializationId === element.id);
+        //     //     // filteredMedicsArr = [...filteredMedics];
+        //     //     console.log('filteredMedics: ', filteredMedics);
+        //     //     // filteredMedicsArr = ();
+        //     //     console.log('FILTERED MEDIC ARR: ', filteredMedicsArr);
+        //     // });
+        //     // filteredMedicsArr.push(filteredMedics);
+        //     // const filteredMedics = mockUsers.find(medic => medic.specializationId === item.specializationId);
+        //     // filteredMedicsArr = filteredMedicsArr.filter((item: any, index: number) => filteredSpecializationsArr.indexOf(item) === index);
+        //     // setMedics(filteredMedicsArr);
+        //     // console.log('filteredMedicsArr', filteredMedicsArr);
+        //     console.log('Specializari pe clinicile ramase: ', filteredSpecializationsArr);
+        //     // filtrare pentru medici in functie de specializari (oras, clinica, specializare => medici)
+        // }
+    };
+
+    const checkSelectedSpecialization = () => {
+        if (selectedMedic) {
+            return;
+        } else {
+            if (selectedSpecialization && !selectedCity && !selectedMedic) {
+                const filteredMedics: UserType[] = mockUsers.filter(
+                    user => user.specializationId === selectedSpecializationId
+                );
+                setMedics(filteredMedics);
+
+                // const filteredClinics = mockClinics.filter(clinic => clinic && clinic.);
+            }
+
+            if (selectedSpecialization && selectedClinic && selectedCity) {
+                const medicsWithSelectedSpecialization: UserType[] = mockUsers.filter(
+                    item => item.specializationId === selectedSpecialization.id && item.clinicId === selectedClinic.id
+                );
+                setMedics(medicsWithSelectedSpecialization);
+
+                // setFieldsValue(
+                //     {
+                //         'medicId': medicsWithSelectedSpecialization && medicsWithSelectedSpecialization[0] && medicsWithSelectedSpecialization[0].id,
+                //     }
+                // );
+            }
+            //     const selectedMedics = mockUsers.filter(item => selectedSpecialization && item.specializationId === selectedSpecialization.id);
+            //     console.log('SPECIALIZATIONSSSS', selectedSpecialization);
+            //     setMedics(selectedMedics);
+
+            //     if (selectedCity) {
+            //         const selectedClinics = mockClinics.filter(item => item.cityId === selectedCity.id);
+            //         // selectedClinics && selectedClinics.length === 1 && setFieldsValue({'clinic': selectedClinics[0].clinic});
+            //         selectedClinics && setClinics(selectedClinics);
+            //         let filteredSpecializationsArr: any = [];
+            //         let filteredMedicsArr: any = [];
+            //         selectedClinics.forEach(clinic => {
+            //             const specializationPerClinic = mockSpecializationPerClinic.filter(item => item.clinicId === clinic.id);
+            //             // console.log('specializationPerClinic', specializationPerClinic);
+
+            //             specializationPerClinic.forEach(item => {
+            //                 const filteredSpecializations = mockSpecializations.find(special => special.id === item.specializationId);
+            //                 // console.log('filteredSpecializations', filteredSpecializations);
+
+            //                 filteredSpecializationsArr.push(filteredSpecializations);
+            //                 filteredSpecializationsArr = filteredSpecializationsArr.filter((item: any, index: number) => filteredSpecializationsArr.indexOf(item) === index);
+            //                 setSpecializations(filteredSpecializationsArr);
+
+            //                 console.log('filteredSpecializationsArr', filteredSpecializationsArr);
+            //             });
+            //         });
+            //     }
+            // }
+
+            // if (selectedSpecialization) {
+            //     const selectedMedics = mockUsers.filter(item => item.specializationId === selectedSpecialization.id);
+            //     setMedics(selectedMedics);
+        }
+    };
+
+    const checkSelectedClinic = () => {
+        if (selectedMedic) {
+            return;
+        } else {
+            const cityOfSelectedClinic: CityType[] = mockCities.filter(
+                item => selectedClinic && item.id === selectedClinic.cityId
+            );
+
+            if (selectedClinic) {
+                const medicsFromSelectedClinic: UserType[] = mockUsers.filter(
+                    item => selectedClinic && item.clinicId === selectedClinic.id
+                );
+                setMedics(medicsFromSelectedClinic);
+                setCities(cityOfSelectedClinic);
+            }
+
+            setFieldsValue({
+                cityId: cityOfSelectedClinic && cityOfSelectedClinic[0] && cityOfSelectedClinic[0].id
+            });
+
+            if (selectedCity && selectedSpecialization && !selectedMedic) {
+                resetFields('specializationId');
+            }
+
             let filteredSpecializationsArr: any = [];
-            let filteredMedicsArr: any = [];
+            const selectedClinics = mockClinics.filter(
+                item => cityOfSelectedClinic && cityOfSelectedClinic[0] && item.cityId === cityOfSelectedClinic[0].id
+            );
 
             selectedClinics.forEach(clinic => {
-                const specializationPerClinic = mockSpecializationPerClinic.filter(item => item.clinicId === clinic.id);
-                // console.log('specializationPerClinic', specializationPerClinic);
-
+                const specializationPerClinic: SpecializationPerClinicType[] = mockSpecializationPerClinic.filter(
+                    item => item.clinicId === clinic.id
+                );
                 specializationPerClinic.forEach(item => {
                     const filteredSpecializations = mockSpecializations.find(
                         special => special.id === item.specializationId
                     );
-                    const filteredMedics = mockUsers.find(medic => medic.specializationId === item.specializationId);
-                    // console.log('filteredSpecializations', filteredSpecializations);
-
                     filteredSpecializationsArr.push(filteredSpecializations);
                     filteredSpecializationsArr = filteredSpecializationsArr.filter(
                         (item: any, index: number) => filteredSpecializationsArr.indexOf(item) === index
                     );
                     setSpecializations(filteredSpecializationsArr);
-
-                    filteredMedicsArr.push(filteredMedics);
-                    // filteredMedicsArr = filteredMedicsArr.filter((item: any, index: number) => filteredSpecializationsArr.indexOf(item) === index);
-                    setMedics(filteredMedicsArr);
-                    console.log('filteredSpecializationsArr', filteredSpecializationsArr);
-                    console.log('filteredMedicsArr', filteredMedicsArr);
                 });
-            });
-
-            // filtrare pentru medici in functie de specializari (oras, clinica, specializare => medici)
-
-            // console.log('SPECIALIZATIONS in check city', specializations);
-        }
-    };
-
-    // console.log('SPECIALIZATIONS outside', specializations);
-
-    const checkSelectedSpecialization = () => {
-        if (selectedSpecialization) {
-            const selectedMedics = mockUsers.filter(item => item.specializationId === selectedSpecialization.id);
-            setMedics(selectedMedics);
-        }
-    };
-
-    const checkSelectedClinic = () => {
-        if (selectedClinic) {
-            const cityOfSelectedClinic = mockCities.filter(item => item.id === selectedClinic.cityId);
-            setCities(cityOfSelectedClinic);
-
-            const medicsFromSelectedClinic = mockUsers.filter(item => item.clinicId === selectedClinic.id);
-            setMedics(medicsFromSelectedClinic);
-
-            setFieldsValue({
-                cityId: cityOfSelectedClinic && cityOfSelectedClinic[0] && cityOfSelectedClinic[0].id
             });
         }
     };
 
     const checkSelectedMedic = () => {
         if (selectedMedic) {
-            const medicSpecialization = mockSpecializations.filter(item => item.id === selectedMedic.specializationId);
+            const medicSpecialization: SpecializationType[] = mockSpecializations.filter(
+                item => item.id === selectedMedic.specializationId
+            );
             setSpecializations(medicSpecialization);
-            // console.log('MEDIC Specialization', medicSpecialization);
 
-            const medicClinic = mockClinics.filter(item => item.id === selectedMedic.clinicId);
+            const medicClinic: ClinicType[] = mockClinics.filter(item => item.id === selectedMedic.clinicId);
             setClinics(medicClinic);
-            // console.log('MEDIC CLINICCCC', medicClinic);
 
-            const medicCity = mockCities.filter(item => item.id === medicClinic[0].cityId);
+            const medicCity: CityType[] = mockCities.filter(item => item.id === medicClinic[0].cityId);
             setCities(medicCity);
-            // console.log('MEDIC CITY', medicCity);
+
+            const medicUsers: UserType[] = mockUsers.filter(user => user.roleId === 1);
+            setMedics(
+                medicUsers.filter(
+                    medic =>
+                        medic.specializationId === medicSpecialization[0].id && medic.clinicId === medicClinic[0].id
+                )
+            );
 
             setFieldsValue({
                 cityId: medicCity && medicCity[0] && medicCity[0].id,
@@ -165,14 +270,59 @@ const NewAppointmentForm = (props: any) => {
         }
     };
 
-    const submitForm = (event: any) => {
-        event.preventDefault();
+    const checkAvailability = (startHour: number) => {
+        const filteredAppointments: AppointmentType[] = mockAppointments.filter(
+            item => item.disponibilityIntervalId === selectedDisponibilityIntervalId
+        );
 
+        if (filteredAppointments) {
+            for (let i = 0; i < filteredAppointments.length; i++) {
+                if (filteredAppointments[i].startHour === startHour) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    };
+
+    const renderIntervals = () => {
+        if (selectedDisponibilityInterval) {
+            const { endHour, startHour, durationHours } = selectedDisponibilityInterval;
+
+            for (let i = startHour; i < endHour; i += durationHours) {
+                const hourAvailability: HourAvailabilityType = {
+                    hour: i,
+                    available: checkAvailability(i)
+                };
+
+                hoursForStart.push(hourAvailability);
+            }
+        }
+    };
+
+    const submitForm = () => {
         form.validateFields((err: any, values: any) => {
             if (!err) {
+                const newAppointment: AppointmentType = {
+                    id: mockAppointments.length + 1,
+                    userId: currentUser && currentUser.id,
+                    medicId: selectedMedicId,
+                    cityId: selectedCityId,
+                    clinicId: selectedClinicId,
+                    status: 'New',
+                    startHour: selectedStartHour,
+                    observations: selectedObservations,
+                    disponibilityIntervalId: selectedDisponibilityIntervalId
+                };
+                mockAppointments.push(newAppointment);
+
+                callbackSetAppointments(mockAppointments.filter(item => item.userId === currentUser.id));
+                callbackSetAppointmentModal(false);
+
                 message.success({
                     content: `New appointment successfully created`,
-                    duration: 3
+                    duration: 4
                 });
             } else {
                 message.error({
@@ -192,8 +342,10 @@ const NewAppointmentForm = (props: any) => {
     };
 
     return (
-        // <Form {...formItemLayout} style={{ padding: 5, borderRadius: 10, backgroundColor: 'seashell' }} onSubmit={submitForm}>
-        <Form {...formItemLayout} style={{ padding: 5, borderRadius: 10, backgroundColor: 'seashell' }}>
+        <Form
+            {...formItemLayout}
+            style={{ padding: 5, boxShadow: '2px 2px 5px grey', borderRadius: 7, backgroundColor: 'seashell' }}
+        >
             <Form.Item label="City" key={'cityId'}>
                 {getFieldDecorator(`cityId`, {
                     validateTrigger: ['onChange'],
@@ -294,6 +446,111 @@ const NewAppointmentForm = (props: any) => {
                 )}
             </Form.Item>
 
+            {/* {getFieldValue('medicId') &&
+                <Form.Item {...availableIntervalsLayout} label={filteredDisponibilityIntervals && filteredDisponibilityIntervals.length ? "Pick a day" : "Pick an hour"} key={'startHour'} style={{ display: 'flex', justifyContent: 'flex-start', }}>
+                    {getFieldDecorator(`startHour`, {
+                        validateTrigger: ['onChange'],
+                        rules: [
+                            {
+                                type: 'number',
+                                required: filteredDisponibilityIntervals && filteredDisponibilityIntervals.length ? true : false,
+                                whitespace: true,
+                                message: 'Please select an interval.',
+                            }
+                        ],
+                    })(
+                        <Radio.Group buttonStyle="solid" size="small">
+                            {
+                                filteredDisponibilityIntervals && filteredDisponibilityIntervals.length
+                                    ? filteredDisponibilityIntervals.map((interval, index) => {
+                                        return <Radio.Button value={interval.startHour + index}>{interval.startHour + index} - {interval.startHour + interval.durationHours + index}</Radio.Button>;
+                                    })
+                                    : <p style={{ fontSize: 12 }}>No date available for this medic.</p>
+                            }
+                        </Radio.Group>
+                    )}
+                </Form.Item>
+            } */}
+
+            {getFieldValue('medicId') && (
+                <Form.Item
+                    {...availableIntervalsLayout}
+                    label="Pick a day"
+                    key={'disponibilityIntervalId'}
+                    style={{ display: 'flex', justifyContent: 'flex-start' }}
+                >
+                    {getFieldDecorator(`disponibilityIntervalId`, {
+                        validateTrigger: ['onChange'],
+                        rules: [
+                            {
+                                type: 'number',
+                                required:
+                                    filteredDisponibilityIntervals && filteredDisponibilityIntervals.length
+                                        ? true
+                                        : false,
+                                whitespace: true,
+                                message: 'Please select a day.'
+                            }
+                        ]
+                    })(
+                        filteredDisponibilityIntervals && filteredDisponibilityIntervals.length ? (
+                            <Select>
+                                {filteredDisponibilityIntervals.map(
+                                    (item: DisponibilityIntervalType, index: number) => {
+                                        return (
+                                            <Select.Option key={index} value={item.id}>
+                                                {moment(item.day).format('DD-MMM-YYYY')}
+                                            </Select.Option>
+                                        );
+                                    }
+                                )}
+                            </Select>
+                        ) : (
+                            <p style={{ fontSize: 12 }}>No date available for this medic.</p>
+                        )
+                    )}
+                </Form.Item>
+            )}
+
+            {getFieldValue('disponibilityIntervalId') && (
+                <Form.Item
+                    {...availableIntervalsLayout}
+                    label="Pick an hour"
+                    key={'startHour'}
+                    style={{ display: 'flex', justifyContent: 'flex-start' }}
+                >
+                    {getFieldDecorator(`startHour`, {
+                        validateTrigger: ['onChange'],
+                        rules: [
+                            {
+                                type: 'number',
+                                required: true,
+                                whitespace: true,
+                                message: 'Please select an hour.'
+                            }
+                        ]
+                    })(
+                        <Radio.Group buttonStyle="solid" size="small">
+                            {renderIntervals()}
+                            {hoursForStart.map((item, index) => {
+                                if (selectedDisponibilityInterval) {
+                                    const { durationHours } = selectedDisponibilityInterval;
+                                    const { hour, available } = item;
+                                    const addPrefix = (theHour: number) =>
+                                        theHour < 10 ? `0${theHour}` : `${theHour}`;
+
+                                    return (
+                                        <Radio.Button value={hour} disabled={!available} key={index}>
+                                            {addPrefix(hour)} - {addPrefix(hour + durationHours)}
+                                        </Radio.Button>
+                                    );
+                                }
+                            })}
+                        </Radio.Group>
+                    )}
+                </Form.Item>
+            )}
+
             <Form.Item label="Observations" key={'observations'}>
                 {getFieldDecorator(`observations`, {
                     validateTrigger: ['onChange', 'onBlur'],
@@ -312,16 +569,8 @@ const NewAppointmentForm = (props: any) => {
                     Reset fields values
                 </Button>
             </Form.Item>
-
-            <Form.Item>
-                <Button onClick={submitForm} style={{ backgroundColor: 'peachpuff' }}>
-                    SUBMIT
-                </Button>
-            </Form.Item>
-
-            <pre>{JSON.stringify(getFieldsValue())}</pre>
         </Form>
     );
 };
-
+//@ts-ignore
 export const NewAppointment = Form.create()(NewAppointmentForm);

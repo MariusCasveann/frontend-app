@@ -148,13 +148,23 @@ export const mockAppointments: AppointmentType[] = [
         status: 'New - for Dr. John - patient sean',
         startHour: 14,
         disponibilityIntervalId: 5
+    },
+    {
+        id: 10,
+        userId: 20,
+        medicId: 10,
+        cityId: 3,
+        clinicId: 4,
+        status: 'New - for Dr. Susan - patient jay',
+        startHour: 8,
+        disponibilityIntervalId: 6
     }
 ];
 
 export const mockDisponibilityIntervals: DisponibilityIntervalType[] = [
     {
         id: 1,
-        day: '2019-10-14',
+        day: '2020-01-14',
         userId: 1,
         startHour: 8,
         endHour: 12,
@@ -178,7 +188,7 @@ export const mockDisponibilityIntervals: DisponibilityIntervalType[] = [
     },
     {
         id: 4,
-        day: '2019-11-23',
+        day: '2019-12-22',
         userId: 3,
         startHour: 8,
         endHour: 16,
@@ -190,6 +200,14 @@ export const mockDisponibilityIntervals: DisponibilityIntervalType[] = [
         userId: 4,
         startHour: 8,
         endHour: 16,
+        durationHours: 2
+    },
+    {
+        id: 6,
+        day: '2019-12-24',
+        userId: 10,
+        startHour: 8,
+        endHour: 14,
         durationHours: 2
     }
 ];
@@ -259,11 +277,11 @@ export const mockClinics: ClinicType[] = [
 ];
 
 export const mockSpecializationPerClinic: SpecializationPerClinicType[] = [
-    // {
-    //     id: 1,
-    //     specializationId: 1,
-    //     clinicId: 1
-    // },
+    {
+        id: 1,
+        specializationId: 1,
+        clinicId: 1
+    },
     {
         id: 2,
         specializationId: 2,
@@ -274,11 +292,11 @@ export const mockSpecializationPerClinic: SpecializationPerClinicType[] = [
         specializationId: 3,
         clinicId: 1
     },
-    // {
-    //     id: 4,
-    //     specializationId: 1,
-    //     clinicId: 2
-    // },
+    {
+        id: 4,
+        specializationId: 1,
+        clinicId: 2
+    },
     {
         id: 5,
         specializationId: 2,
@@ -299,11 +317,11 @@ export const mockSpecializationPerClinic: SpecializationPerClinicType[] = [
         specializationId: 2,
         clinicId: 3
     },
-    {
-        id: 9,
-        specializationId: 3,
-        clinicId: 3
-    },
+    // {
+    //     id: 9,
+    //     specializationId: 3,
+    //     clinicId: 3
+    // },
     {
         id: 10,
         specializationId: 1,
