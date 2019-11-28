@@ -44,7 +44,14 @@ interface HourAvailabilityType {
 }
 
 const NewAppointmentForm = (props: any) => {
-    const { currentUser, callbackOnSubmit, callbackSetAppointments, callbackSetAppointmentModal, form } = props;
+    const {
+        currentUser,
+        callbackOnSubmit,
+        callbackSetAppointments,
+        callbackSetAppointmentModal,
+        form,
+        setCallbackOnSubmit
+    } = props;
     const { getFieldDecorator, getFieldValue, resetFields, setFieldsValue } = form;
 
     const [cities, setCities] = useState<CityType[] | null>(mockCities);
@@ -68,9 +75,14 @@ const NewAppointmentForm = (props: any) => {
     );
     const selectedStartHour = getFieldValue('startHour');
     const selectedObservations = getFieldValue('observations');
-    const filteredDisponibilityIntervals = mockDisponibilityIntervals.filter(
-        interval => selectedMedic && interval.userId === selectedMedic.id
-    );
+    const filteredDisponibilityIntervals = mockDisponibilityIntervals
+        .filter(interval => selectedMedic && interval.userId === selectedMedic.id)
+        .sort((a, b) => moment(a.day).diff(b.day));
+    const disponibilityIntervalsMap = {};
+    for (let i = 0; i < mockDisponibilityIntervals.length; i++) {
+        disponibilityIntervalsMap[mockDisponibilityIntervals[i].id] = mockDisponibilityIntervals[i];
+    }
+
     const hoursForStart: HourAvailabilityType[] = [];
 
     useEffect(() => {
@@ -94,6 +106,17 @@ const NewAppointmentForm = (props: any) => {
             submitForm();
         }
     }, [callbackOnSubmit]);
+
+    useEffect(() => {
+        setCallbackOnSubmit(false);
+    }, [
+        selectedCity,
+        selectedSpecialization,
+        selectedClinic,
+        selectedMedic,
+        selectedStartHour,
+        selectedDisponibilityInterval
+    ]);
 
     const checkSelectedCity = () => {
         // if (selectedMedic) {
@@ -317,7 +340,15 @@ const NewAppointmentForm = (props: any) => {
                 };
                 mockAppointments.push(newAppointment);
 
-                callbackSetAppointments(mockAppointments.filter(item => item.userId === currentUser.id));
+                callbackSetAppointments(
+                    mockAppointments
+                        .filter(item => item.userId === currentUser.id)
+                        .sort((a, b) =>
+                            moment(disponibilityIntervalsMap[a.disponibilityIntervalId].day).diff(
+                                disponibilityIntervalsMap[b.disponibilityIntervalId].day
+                            )
+                        )
+                );
                 callbackSetAppointmentModal(false);
 
                 message.success({

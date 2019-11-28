@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Login } from './LoginComponent';
 import { Appointments } from './AppointmentsComponent';
 import { mockUsers } from '../mockDataForCheckMe';
+import '../checkMe.css';
 
 const pageStyle = {
     height: '90vh',

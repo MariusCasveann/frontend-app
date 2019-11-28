@@ -65,7 +65,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 1,
         cityId: 1,
         clinicId: 1,
-        status: 'New - for Dr. MC - patient david',
+        status: 'New',
         startHour: 8,
         disponibilityIntervalId: 1
     },
@@ -75,7 +75,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 1,
         cityId: 1,
         clinicId: 1,
-        status: 'New - for Dr. MC - patient xin',
+        status: 'New',
         startHour: 8,
         disponibilityIntervalId: 2
     },
@@ -95,7 +95,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 2,
         cityId: 1,
         clinicId: 1,
-        status: 'New - for Dr. AC - patient adrian',
+        status: 'New',
         startHour: 9,
         disponibilityIntervalId: 3
     },
@@ -105,7 +105,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 3,
         cityId: 1,
         clinicId: 1,
-        status: 'New - for Dr. CC - Patient amy',
+        status: 'New',
         startHour: 8,
         disponibilityIntervalId: 4
     },
@@ -115,7 +115,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 3,
         cityId: 1,
         clinicId: 1,
-        status: 'New - for Dr. CC-2 - Patient mark',
+        status: 'New',
         startHour: 9,
         disponibilityIntervalId: 4
     },
@@ -125,7 +125,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 3,
         cityId: 1,
         clinicId: 1,
-        status: 'New - for Dr. CC-3 - patient elisa',
+        status: 'New',
         startHour: 10,
         disponibilityIntervalId: 4
     },
@@ -135,7 +135,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 4,
         cityId: 1,
         clinicId: 2,
-        status: 'New - for Dr. John - patient nina',
+        status: 'New',
         startHour: 8,
         disponibilityIntervalId: 5
     },
@@ -145,7 +145,7 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 4,
         cityId: 1,
         clinicId: 2,
-        status: 'New - for Dr. John - patient sean',
+        status: 'New',
         startHour: 14,
         disponibilityIntervalId: 5
     },
@@ -155,9 +155,19 @@ export const mockAppointments: AppointmentType[] = [
         medicId: 10,
         cityId: 3,
         clinicId: 4,
-        status: 'New - for Dr. Susan - patient jay',
+        status: 'New',
         startHour: 8,
         disponibilityIntervalId: 6
+    },
+    {
+        id: 11,
+        userId: 20,
+        medicId: 1,
+        cityId: 1,
+        clinicId: 1,
+        status: 'New',
+        startHour: 10,
+        disponibilityIntervalId: 7
     }
 ];
 
@@ -209,6 +219,30 @@ export const mockDisponibilityIntervals: DisponibilityIntervalType[] = [
         startHour: 8,
         endHour: 14,
         durationHours: 2
+    },
+    {
+        id: 7,
+        day: '2019-12-26',
+        userId: 1,
+        startHour: 10,
+        endHour: 16,
+        durationHours: 1
+    },
+    {
+        id: 8,
+        day: '2019-12-30',
+        userId: 1,
+        startHour: 8,
+        endHour: 18,
+        durationHours: 1
+    },
+    {
+        id: 9,
+        day: '2019-12-28',
+        userId: 1,
+        startHour: 14,
+        endHour: 20,
+        durationHours: 1
     }
 ];
 
