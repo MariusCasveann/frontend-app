@@ -3,6 +3,9 @@ import UserProfile from '../../authentication/molecules/UserProfile/UserProfile'
 import { ComponentClass, FunctionComponent } from 'react';
 import PageNotFound from '../atoms/PageNotFound';
 import { NewDashboard } from '../../dashboard/newDashboard/NewDashboard';
+import { EditUserPage } from '../../dashboard/newDashboard/components/EditUserPage';
+import { ChatApplication } from '../../dashboard/newDashboard/chatApp/components/ChatApplication';
+import { CheckMeApplication } from '../../dashboard/newDashboard/checkMeApp/components/CheckMeApplication';
 
 // constants
 import {
@@ -61,6 +64,9 @@ const PRODUCT_DETAILS_PATH = '/product-details';
 const SERVICE_SECTION_PATH = '/service-section';
 const EXTERNAL_TOOLS_PATH = '/external-tools';
 const NEW_DASHBOARD_PATH = '/new-dashboard';
+const EDIT_USER_PATH = '/new-dashboard/edit-user/:name'; // :title  - marchez o valoare dinamica
+const CHAT_APP = '/chat-app';
+const CHECK_ME = '/check-me';
 
 export interface RouteI {
     allowedRoles: string[];
@@ -221,6 +227,24 @@ export const routes: RouteI[] = [
         component: NewDashboard
     },
     {
+        allowedRoles: [ALWAYS],
+        title: 'Chat application',
+        path: CHAT_APP,
+        component: ChatApplication
+    },
+    {
+        allowedRoles: [ALWAYS],
+        title: 'CheckMe Application',
+        path: CHECK_ME,
+        component: CheckMeApplication
+    },
+    {
+        allowedRoles: [ALWAYS],
+        title: 'Edit user',
+        path: EDIT_USER_PATH,
+        component: EditUserPage
+    },
+    {
         allowedRoles: ALLOWED_ROUTES_FOR_PRODUCT,
         title: 'PageNotFound',
         path: DOMAIN_PATH,
@@ -340,6 +364,16 @@ export const navigationOptions: Navigation[] = [
         icon: 'laptop',
         label: 'New Dashboard',
         navLink: NEW_DASHBOARD_PATH
+    },
+    {
+        icon: 'message',
+        label: 'Chat',
+        navLink: CHAT_APP
+    },
+    {
+        icon: 'phone',
+        label: 'CheckMe',
+        navLink: CHECK_ME
     },
     {
         icon: 'appstore',

@@ -7,6 +7,9 @@ import { mockCurrentUsers, tableHeader, UserType } from '../mockData';
 import { UserConsumer } from '../UserContext';
 import { SimpleButton } from './SimpleButton';
 import ConfirmModal from '../../../common/molecules/Modals/ConfirmModal';
+import { createHashHistory } from 'history';
+
+const history = createHashHistory();
 
 export const Table: React.FC = props => {
     const [modal, setShowHideModal] = useState<boolean>(false);
@@ -17,6 +20,7 @@ export const Table: React.FC = props => {
     const [newUserLastName, setUserLastName] = useState<string>('');
     const [currentUsers, setCurrentUsers] = useState<UserType[]>(mockCurrentUsers);
     let theFullName = `${selectedUser && selectedUser.firstName}-${selectedUser && selectedUser.lastName}`;
+    const newUser = JSON.parse(`${localStorage.getItem('newUser')}`);
 
     useEffect(() => {
         if (selectedUser) {
@@ -25,6 +29,11 @@ export const Table: React.FC = props => {
         }
     }, [selectedUser]);
 
+    if (newUser) {
+        setCurrentUsers(currentUsers.map((user, index) => (user.id === newUser.id ? newUser : user)));
+        localStorage.removeItem('newUser');
+    }
+
     const showConfirmModal = () => {
         if (modal && selectedUser) {
             return (
@@ -32,7 +41,7 @@ export const Table: React.FC = props => {
                     onCancel={onCancel}
                     onOk={onOk}
                     visible={true}
-                    text={`Are you sure you want to delete ${theFullName}`}
+                    text={`Are you sure you want to delete ${theFullName}?`}
                     title={'Delete user'}
                 />
             );
@@ -146,6 +155,11 @@ export const Table: React.FC = props => {
         setSelectedUser(user);
     };
 
+    const clickNewEditBtn = (user: UserType) => () => {
+        history.push(`/new-dashboard/edit-user/${user.firstName}-${user.lastName}`);
+        localStorage.setItem('selectedUser', JSON.stringify(user));
+    };
+
     const actionsButtons = (user: UserType) => {
         return (
             <>
@@ -162,6 +176,13 @@ export const Table: React.FC = props => {
                     style={{ fontSize: 12, color: 'darkred' }}
                     icon={<Icon type="delete" />}
                     callbackOnClick={clickDeleteBtn(user)}
+                />
+                <SimpleButton
+                    label="New edit"
+                    disabled={Boolean(selectedUser)}
+                    style={{ fontSize: 12, color: 'darkcyan' }}
+                    icon={<Icon type="form" />}
+                    callbackOnClick={clickNewEditBtn(user)}
                 />
             </>
         );
@@ -224,6 +245,15 @@ export const Table: React.FC = props => {
                             <tr className="user" key={index}>
                                 <td>{item.id}</td>
                                 <td>
+                                    {item && item.imageUrl ? (
+                                        <img
+                                            style={{ width: 18, height: 18, borderRadius: '50%', marginLeft: -5 }}
+                                            src={item && item.imageUrl}
+                                        />
+                                    ) : (
+                                        <Icon type="user" />
+                                    )}
+                                    &nbsp;
                                     {editMode && selectedUser && selectedUser.id === item.id
                                         ? editUser({ value: newUserFirstName, onChange: setUserFirstName })
                                         : item.firstName}

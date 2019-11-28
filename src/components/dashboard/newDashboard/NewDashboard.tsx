@@ -19,7 +19,8 @@ export const NewDashboard = () => {
         checkInput: checkInput,
         inputValue: inputValue,
         country: 'Romania',
-        number: 100
+        number: 100,
+        selectedUser: null
     };
 
     return (
